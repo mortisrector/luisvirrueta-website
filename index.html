@@ -306,7 +306,8 @@
         }
         
         .hero-brand-container {
-            margin-bottom: 1.6rem; /* closer to title for better alignment */
+            margin-bottom: 1.6rem;
+            margin-top: 2.5rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -418,27 +419,32 @@
         
         /* Título principal transformador */
         .hero-impact {
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #1a202c 0%, #667eea 100%);
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
+            line-height: 1.15;
+            display: block;
             margin-bottom: 0;
-            letter-spacing: -1px;
+            letter-spacing: -1.2px;
+            text-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+            position: relative;
         }
         
-        .hero-title-icon {
-            font-size: 0.85em;
-            color: #667eea;
-            -webkit-text-fill-color: #667eea;
-            background: none;
-            opacity: 0.9;
+        .hero-impact::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            opacity: 0.1;
+            filter: blur(30px);
+            z-index: -1;
         }
         
         .hero-impact-secondary {
@@ -642,6 +648,35 @@
         
         .btn--secondary:active {
             transform: translateY(0px);
+        }
+        
+        /* Video button styles */
+        .btn-video {
+            gap: 0.7rem;
+        }
+        
+        .btn-video i {
+            font-size: 1.3rem;
+        }
+        
+        .btn-video-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.15rem;
+        }
+        
+        .btn-video-main {
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        .btn-video-sub {
+            font-size: 0.75rem;
+            font-weight: 400;
+            opacity: 0.8;
+            text-transform: lowercase;
         }
         
         /* Sections */
@@ -1118,16 +1153,11 @@
             
             /* Títulos principales responsive */
             .hero-impact { 
-                font-size: 2.4rem; 
+                font-size: 2.8rem; 
                 line-height: 1.2; 
                 margin-bottom: 0; 
-                display:flex;
-                gap: 0.4rem;
-                letter-spacing: -0.6px;
-            }
-            
-            .hero-title-icon {
-                font-size: 0.8em;
+                display: block;
+                letter-spacing: -0.8px;
             }
             
             /* Subtítulo responsive */
@@ -1294,15 +1324,10 @@
             
             /* Títulos principales extra small */
             .hero-impact {
-                font-size: 2rem;
+                font-size: 2.3rem;
                 line-height: 1.25;
                 margin-bottom: 0;
-                letter-spacing: -0.5px;
-                gap: 0.35rem;
-            }
-            
-            .hero-title-icon {
-                font-size: 0.75em;
+                letter-spacing: -0.6px;
             }
             
             /* Subtítulo extra small */
@@ -1401,10 +1426,10 @@
         /* Extra small tuning for phones ~360-420px */
         @media (max-width: 420px) {
             .container { padding: 0 0.5rem; }
+            .hero-brand-container { margin-top: 2rem; }
             .micro-insight { font-size: 0.81rem; max-width: 96%; padding: 0 0.6rem; margin-bottom: 1.1rem; }
             .hero-title { max-width: 96%; margin-bottom: 1.5rem; padding: 0 0.6rem; }
-            .hero-impact { font-size: 1.85rem; letter-spacing: -0.4px; gap: 0.3rem; }
-            .hero-title-icon { font-size: 0.7em; }
+            .hero-impact { font-size: 2rem; letter-spacing: -0.5px; }
             .hero-subtitle-block { max-width: 96%; padding: 0 0.6rem; margin-top: 1.5rem; margin-bottom: 1rem; }
             .hero-opening { font-size: 0.91rem; }
             .hero-explanation { font-size: 0.86rem; }
@@ -1484,13 +1509,14 @@
         
         .video-wrapper {
             position: relative;
-            padding-bottom: 177.78%; /* 9:16 aspect ratio for vertical video */
-            height: 0;
+            width: 100%;
+            height: 85vh;
+            max-width: 500px;
+            margin: 0 auto;
             overflow: hidden;
             background: #000;
             border-radius: 12px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            max-height: 85vh;
         }
         
         .video-wrapper iframe {
@@ -1533,7 +1559,8 @@
             
             .video-wrapper {
                 border-radius: 8px;
-                max-height: 80vh;
+                height: 75vh;
+                max-width: 90vw;
             }
         }
         
@@ -1646,10 +1673,7 @@
                     
                     <!-- Main Title (transformador) -->
                     <h1 class="hero-title">
-                        <span class="hero-impact">
-                            <i class="fas fa-bullseye hero-title-icon"></i>
-                            Directo a las creencias raíz
-                        </span>
+                        <span class="hero-impact">Directo a las creencias raíz</span>
                     </h1>
                     
                     <!-- Subtítulo apertura -->
@@ -1673,9 +1697,12 @@
                             <i class="fas fa-calendar-alt"></i>
                             <span>Agendar Sesión</span>
                         </a>
-                        <button id="openVideoBtn" class="btn btn--secondary btn--lg">
-                            <i class="fas fa-play"></i>
-                            <span>Conoce mi Método</span>
+                        <button id="openVideoBtn" class="btn btn--secondary btn--lg btn-video">
+                            <i class="fas fa-play-circle"></i>
+                            <span class="btn-video-content">
+                                <span class="btn-video-main">Conoce mi Método</span>
+                                <span class="btn-video-sub">ver video</span>
+                            </span>
                         </button>
                     </div>
                 </div>
