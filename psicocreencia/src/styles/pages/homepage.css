@@ -1,0 +1,36 @@
+/* ========================================
+   HOMEPAGE SPECIFIC STYLES
+   ======================================== */
+
+/* Lead text styling */
+.lead {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-600);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-8);
+}
+
+/* Section spacing */
+.section {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+}
+
+.section:first-of-type {
+    padding-top: calc(var(--space-16) + 80px); /* Account for fixed header */
+}
+
+/* Content wrapper for readable line lengths */
+.content-wrapper {
+    max-width: 65ch;
+    margin: 0 auto;
+}
+
+.content-wrapper.text-center {
+    text-align: center;
+}
+
+/* Additional sections placeholder */
+#additional-sections {
+    display: block;
+}

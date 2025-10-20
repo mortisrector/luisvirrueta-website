@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Servicios de psicología profesional. Terapia individual, de pareja y familiar con psicólogos especializados.">
+    <title>Luis Virrueta - Psicología de la Creencia | Transformación Real sin Limitaciones</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/agenda.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <i class="fas fa-eye logo-icon"></i>
+                    <span class="brand-text">
+                        <span class="brand-title">Psic.</span> 
+                        <span class="brand-name">Luis Virrueta</span>
+                    </span>
+                </div>
+                <button class="nav-toggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#metodo" class="nav-link">Mi Método</a></li>
+                    <li><a href="#transformacion" class="nav-link">Transformación</a></li>
+                    <li><a href="#quien-soy" class="nav-link">¿Quién Soy?</a></li>
+                    <li class="nav-tools-dropdown">
+                        <a href="#" class="nav-link tools-main-link">
+                            <span class="tools-text-container">
+                                <i class="fas fa-tools"></i>
+                                Herramientas
+                            </span>
+                        </a>
+                        <div class="tools-dropdown-menu">
+                            <a href="blog/" class="premium-item">
+                                <i class="fas fa-feather-alt"></i>
+                                <div class="item-content">
+                                    <h5>Blog</h5>
+                                    <p>Artículos y reflexiones</p>
+                                </div>
+                            </a>
+                            <a href="#" class="premium-item">
+                                <i class="fas fa-tools"></i>
+                                <div class="item-content">
+                                    <h5>Herramientas</h5>
+                                    <p>Recursos prácticos</p>
+                                </div>
+                            </a>
+                            <a href="#" class="premium-item">
+                                <i class="fas fa-microphone"></i>
+                                <div class="item-content">
+                                    <h5>Podcast</h5>
+                                    <p>Conversaciones profundas</p>
+                                </div>
+                            </a>
+                            <a href="#" class="premium-item">
+                                <i class="fas fa-book"></i>
+                                <div class="item-content">
+                                    <h5>Libros</h5>
+                                    <p>Publicaciones y guías</p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Overlay para menú móvil -->
+    <div class="nav-overlay"></div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <!-- Panel Rectangular Redondeado con Método -->
+                <div class="hero-brand-container">
+                    <div class="method-label">Método Integral</div>
+                    <div class="hero-brand-pill">
+                        <span class="brand-text">Psicología de la</span>
+                        <span class="brand-highlight">Creencia®</span>
+                    </div>
+                </div>
+                
+                <!-- Titular Principal -->
+                <h1 class="hero-title-minimal">
+                    Hasta que tus <span class="highlight">creencias ocultas</span> se hagan visibles, 
+                    gobernarán tu vida. Al transformarlas, 
+                    lo imposible se vuelve posible.
+                </h1>
+                
+                <!-- Caja destacada para primera sesión -->
+                <div class="hero-first-session-box">
+                    <div class="session-header">
+                        <i class="fas fa-bolt session-icon"></i>
+                        <h3 class="session-title">Desde la primera sesión</h3>
+                    </div>
+                    
+                    <p class="session-description">
+                        La primera sesión es reveladora: ahí surge la creencia raíz que ha guiado tu vida en silencio. 
+                        Ese descubrimiento abre el camino al cambio que esperabas.
+                    </p>
+                    
+                    <!-- Beneficios mejorados -->
+                    <div class="hero-benefits-compact">
+                        <div class="benefit-compact">
+                            <i class="fas fa-key benefit-icon-minimal"></i>
+                            <span>Rompes el ciclo de patrones repetidos</span>
+                        </div>
+                        <div class="benefit-compact">
+                            <i class="fas fa-star benefit-icon-minimal"></i>
+                            <span>Recuperas claridad y dirección</span>
+                        </div>
+                        <div class="benefit-compact">
+                            <i class="fas fa-seedling benefit-icon-minimal"></i>
+                            <span>Recuperas energía y esperanza real</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Texto informativo -->
+                    <div class="session-info-text">
+                        <span class="info-highlight">👉</span> En tu primera sesión descubrirás tu creencia raíz.
+                    </div>
+                    
+                    <!-- CTA dentro del cuadro -->
+                    <div class="session-cta">
+                        <button onclick="abrirAgendaSimple()" class="btn btn-primary btn-main">
+                            Agenda tu primera sesión
+                        </button>
+                    </div>
+                    
+                    <!-- Link método dentro del cuadro -->
+                    <div class="session-method-link">
+                        <a href="#metodo" class="method-link-small">Conoce cómo funciona el método →</a>
+                    </div>
+                </div>
+                
+                <!-- Credenciales debajo del CTA -->
+                <div class="hero-credentials-minimal">
+                    3 niveles: Psicología + Psicoanálisis + Energética. Sesiones online 45–60 min.
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-graphic">
+                    <i class="fas fa-brain"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Respaldo y Credibilidad -->
+    <section class="credibility-section">
+        <div class="container">
+            <!-- Título optimizado -->
+            <div class="credibility-header">
+                <h2 class="credibility-title">
+                    Método respaldado por <span class="highlight">ciencia, experiencia</span> 
+                    y transformación real
+                </h2>
+            </div>
+
+            <!-- Texto central mejorado -->
+            <div class="credibility-story">
+                <p class="story-text">
+                    Tras años acompañando a más de <strong>300 personas</strong> en sus procesos de cambio, 
+                    descubrí algo poderoso: cuando transformas la creencia raíz que sostiene tus bloqueos, 
+                    <em>lo imposible se vuelve posible</em>.
+                </p>
+            </div>
+
+            <!-- Métricas rediseñadas -->
+            <div class="credibility-metrics">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="metric-number">+300</h3>
+                    <p class="metric-text">Personas transformadas</p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3 class="metric-number">Internacional</h3>
+                    <p class="metric-text">Europa y festivales globales</p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="metric-number">Científico</h3>
+                    <p class="metric-text">Psicología + neurociencia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method Section -->
+    <section id="metodo" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Psicología de la Creencia</h2>
+                <p class="section-description">
+                    <strong>«Creé la Psicología de la Creencia con un propósito claro:</strong> liberar las creencias profundas que nos guían y nos limitan, 
+                    abarcando la totalidad de nuestra experiencia en los niveles consciente, inconsciente y supraconsciente. 
+                    Después de años trabajando con pacientes, descubrí que para transformar nuestra realidad, es esencial abordar estas tres dimensiones al mismo tiempo. 
+                    <strong>Las terapias actuales, incluso las más holísticas, suelen enfocarse en una o, a lo mucho, dos de ellas. 
+                    Este enfoque único y completo marca la diferencia.»</strong>
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="service-title">Dimensión Consciente</h3>
+                    <p class="service-description">
+                        Trabajamos con los pensamientos, creencias y patrones que reconoces conscientemente. 
+                        Aquí identificamos las limitaciones mentales que te impiden avanzar.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Identificación de creencias limitantes</li>
+                        <li><i class="fas fa-check"></i> Reestructuración cognitiva profunda</li>
+                        <li><i class="fas fa-check"></i> Patrones de pensamiento transformados</li>
+                    </ul>
+                </div>
+                <div class="service-card featured">
+                    <div class="service-badge">Enfoque Único</div>
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="service-title">Dimensión Inconsciente</h3>
+                    <p class="service-description">
+                        Accedemos a las creencias más profundas que operan sin que te des cuenta, 
+                        pero que determinan tus experiencias y resultados de vida.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Trabajo con el inconsciente personal</li>
+                        <li><i class="fas fa-check"></i> Liberación de traumas profundos</li>
+                        <li><i class="fas fa-check"></i> Reprogramación de patrones automáticos</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3 class="service-title">Dimensión Supraconsciente</h3>
+                    <p class="service-description">
+                        Conectamos con tu sabiduría superior, ese nivel de consciencia que trasciende 
+                        las limitaciones ordinarias y accede a tu verdadero potencial.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Conexión con la sabiduría interior</li>
+                        <li><i class="fas fa-check"></i> Expansión de consciencia</li>
+                        <li><i class="fas fa-check"></i> Acceso a tu potencial ilimitado</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Call to Action después de servicios -->
+            <div class="services-cta">
+                <div class="cta-content">
+                    <h3>¿Listo para Tu Transformación?</h3>
+                    <p>Agenda tu sesión exploratoria gratuita y descubre cómo puedes cambiar tu realidad</p>
+                    <button onclick="window.agendaSystem.openModal()" class="btn btn-primary btn-lg">
+                        <i class="fas fa-calendar-alt"></i>
+                        Agendar Sesión Transformadora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transformation Section -->
+    <section id="transformacion" class="transformation">
+        <div class="container">
+            <div class="transformation-content">
+                <div class="transformation-text">
+                    <h2 class="section-title">Técnicas Únicas para Transformación Acelerada</h2>
+                    <p class="transformation-description">
+                        Las técnicas que forman parte de la Psicología de la Creencia permiten una <strong>transformación acelerada</strong>. 
+                        Las he construido a partir de una profunda exploración de los elementos más poderosos de múltiples culturas y disciplinas, 
+                        encontrando principios comunes que resuenan universalmente, puntos en común, coincidencias que revelaban una sabiduría compartida.
+                    </p>
+                    <p class="transformation-description">
+                        Al atender las dimensiones consciente, inconsciente y supraconsciente al mismo tiempo por medio de estas técnicas, 
+                        he podido ser testigo de la velocidad en que mis pacientes cambian su vida <strong>alcanzando lo que al principio creían imposible.</strong>
+                    </p>
+                    <div class="transformation-benefits">
+                        <div class="benefit">
+                            <i class="fas fa-lightning-bolt"></i>
+                            <div>
+                                <h4>Transformación Acelerada</h4>
+                                <p>Cambios profundos en tiempos que antes parecían imposibles</p>
+                            </div>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-globe"></i>
+                            <div>
+                                <h4>Sabiduría Universal</h4>
+                                <p>Técnicas basadas en principios comunes de múltiples culturas</p>
+                            </div>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-rocket"></i>
+                            <div>
+                                <h4>Resultados Extraordinarios</h4>
+                                <p>Logra lo que antes creías completamente imposible</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="transformation-image">
+                    <div class="transformation-graphic">
+                        <i class="fas fa-atom"></i>
+                        <div class="orbit orbit-1"></div>
+                        <div class="orbit orbit-2"></div>
+                        <div class="orbit orbit-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Difference Section -->
+    <section id="diferencia" class="difference">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">La Diferencia que Marca la Diferencia</h2>
+                <h3 class="section-subtitle">Contesta todas tus dudas más profundas</h3>
+            </div>
+            <div class="difference-content">
+                <div class="difference-text">
+                    <p class="difference-quote">
+                        <strong>«El problema que encuentro en la psicología ortodoxa es que suele ignorar algo fundamental: 
+                        la dimensión energética. Y es que, piensa en ello…</strong>
+                    </p>
+                    <div class="profound-questions">
+                        <h4>¿Cómo puede ser que las preguntas más profundas y humanas queden sin resolver?</h4>
+                        <ul class="questions-list">
+                            <li><i class="fas fa-question-circle"></i> ¿Qué es la existencia?</li>
+                            <li><i class="fas fa-question-circle"></i> ¿Cuál es el propósito de vida?</li>
+                            <li><i class="fas fa-question-circle"></i> ¿Por qué, pese a todo lo que tenemos, aún sentimos que falta algo?</li>
+                            <li><i class="fas fa-question-circle"></i> ¿Quién soy realmente, más allá de las expectativas y roles que cumplo?</li>
+                            <li><i class="fas fa-question-circle"></i> ¿Qué es la conciencia y hasta dónde puede expandirse?</li>
+                            <li><i class="fas fa-question-circle"></i> ¿Cuál es mi conexión con el todo?</li>
+                        </ul>
+                        <p class="questions-conclusion">
+                            <strong>Estas preguntas, que muchos temen incluso pronunciar en voz alta, necesitan un espacio donde puedan explorarse 
+                            y es hasta ese momento que todo comienza a fluir y potenciarse.»</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-section">
+                <a href="#sesion" class="btn btn-primary btn-large">Agenda una Sesión Ahora</a>
+                <p class="cta-subtitle">Comienza tu transformación hacia una vida sin limitaciones</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="quien-soy" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">¿Quién Soy?</h2>
+                <h3 class="section-subtitle">Mi Misión: Liberar Tu Potencial</h3>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-intro">
+                        <p class="about-description">
+                            Soy <strong>Luis Virrueta</strong>, psicólogo con una maestría y especialización en psicoanálisis, 
+                            pero mi vocación va mucho más allá de un título. Desde siempre, he sentido una necesidad profunda de 
+                            entender y explorar el potencial humano en todas sus dimensiones, en busca de respuestas que realmente transformen la vida.
+                        </p>
+                        <p class="about-description">
+                            <strong>Mi misión es ayudarte a liberar las creencias que te limitan, a descubrir el poder que ya tienes dentro 
+                            y a transformar tu vida desde el interior.</strong>
+                        </p>
+                    </div>
+                    
+                    <div class="journey-section">
+                        <h4>¿Por Qué Creé la Psicología de la Creencia?</h4>
+                        <p class="journey-text">
+                            A lo largo de mi recorrido personal y profesional, desarrollé la Psicología de la Creencia: 
+                            <strong>un enfoque que fusiona los principios más poderosos de diversas disciplinas y culturas</strong>, 
+                            encontrando esos puntos de convergencia que revelan una sabiduría universal.
+                        </p>
+                        <p class="journey-text">
+                            Esta teoría nació de mi deseo de ofrecer algo que fuera más allá de los enfoques convencionales, 
+                            algo que permitiera a cada persona superar las barreras que sus creencias limitantes han creado y 
+                            <strong>descubrir una forma de vivir en plenitud auténtica y sin restricciones.</strong>
+                        </p>
+                    </div>
+
+                    <div class="search-journey">
+                        <h4>Mi Camino de Búsqueda y Exploración</h4>
+                        <p class="journey-text">
+                            Desde pequeño, sentí la necesidad de explorar y cuestionar más allá de los límites que me rodeaban. 
+                            Aunque crecí en una familia católica, pronto comencé a experimentar con otras religiones y sistemas de creencias, 
+                            buscando respuestas más amplias.
+                        </p>
+                        <p class="journey-text">
+                            Sin embargo, en todas ellas, tarde o temprano encontraba límites: algunas promovían sistemas de culpa, 
+                            otras imponían dogmas rígidos, y todas parecían detenerse justo cuando comenzaba a cuestionar o a buscar algo más profundo.
+                        </p>
+                    </div>
+
+                    <div class="psychology-discovery">
+                        <h4>El Descubrimiento de una Nueva Psicología</h4>
+                        <p class="journey-text">
+                            A lo largo de mi formación, también probé con diferentes tipos de psicólogos, ansioso por entender más del potencial humano. 
+                            Sin embargo, noté que muchos enfoques partían de la idea de que la felicidad plena era inalcanzable, 
+                            que la carencia y el vacío eran las fuerzas que impulsaban al ser humano.
+                        </p>
+                        <p class="journey-text">
+                            <strong>Pero mi intuición me decía que tenía que haber algo más allá de estas limitaciones; 
+                            estaba convencido de que una plenitud real era posible, aunque aún no supiera cómo lograrla.</strong>
+                        </p>
+                    </div>
+
+                    <div class="integration-path">
+                        <h4>De la Ciencia y el Arte a la Integración</h4>
+                        <p class="journey-text">
+                            Esta búsqueda me llevó a profundizar en teorías y disciplinas diversas: 
+                            <strong>física cuántica, filosofía, psicoanálisis, neurociencias, biocentrismo</strong> y mucho más. 
+                            Me rodeé de personas con perspectivas distintas y probé varias carreras, desde música e ingeniería hasta diseño.
+                        </p>
+                        <p class="journey-text">
+                            Finalmente, encontré mi lugar en la psicología, un campo que me permitió integrar todas estas exploraciones en algo mayor. 
+                            Así nació la Psicología de la Creencia, una práctica que combina lo mejor de la ciencia, la filosofía y el arte.
+                        </p>
+                    </div>
+
+                    <div class="current-life">
+                        <h4>Viviendo la Integración</h4>
+                        <p class="journey-text">
+                            Actualmente, viviendo en Europa, desarrollo proyectos de fotografía, música y diseño gráfico que expresan 
+                            esta misma esencia de búsqueda y expansión. Cada imagen y sonido es una forma de captar lo que va más allá de lo visible.
+                        </p>
+                        <p class="journey-conclusion">
+                            <strong>Hoy, puedo decirte que alcanzar una felicidad plena es posible.</strong> Con este enfoque auténtico y expansivo, 
+                            cada creencia se convierte en una llave hacia nuevas posibilidades. Juntos, podemos transformar tus creencias 
+                            para que vivas sin limitaciones, con una plenitud que va más allá de lo que siempre creíste posible.
+                        </p>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder professional">
+                        <i class="fas fa-user-circle"></i>
+                        <p>Luis Virrueta</p>
+                        <p class="credentials-preview">Psicólogo • Maestría en Psicoanálisis<br>
+                        Creador de la Psicología de la Creencia<br>
+                        Viviendo en Europa</p>
+                    </div>
+                    <div class="credentials-modern">
+                        <div class="credential">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h4>Formación Académica</h4>
+                                <p>Psicología + Maestría en Psicoanálisis</p>
+                            </div>
+                        </div>
+                        <div class="credential">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <h4>Innovación</h4>
+                                <p>Creador de la Psicología de la Creencia</p>
+                            </div>
+                        </div>
+                        <div class="credential">
+                            <i class="fas fa-palette"></i>
+                            <div>
+                                <h4>Enfoque Integral</h4>
+                                <p>Ciencia, Arte y Espiritualidad</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="sesion" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2 class="section-title">Agenda Tu Sesión Transformadora</h2>
+                    <p class="contact-description">
+                        Comienza tu viaje hacia una vida sin limitaciones. Trabajaremos juntos en las tres dimensiones 
+                        de tu consciencia para crear cambios profundos y duraderos.
+                    </p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-video"></i>
+                            <div>
+                                <h4>Sesiones Online</h4>
+                                <p>Desde cualquier lugar del mundo<br>Plataformas seguras y confidenciales</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>luis@psicologiadelacreencia.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-whatsapp"></i>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <p>+34 XXX XXX XXX</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Disponibilidad</h4>
+                                <p>Horarios flexibles<br>Adaptados a tu zona horaria</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="transformation-promise">
+                        <div class="promise-card">
+                            <i class="fas fa-star"></i>
+                            <h4>Primera Sesión Exploratoria</h4>
+                            <p>Descubre si mi método es para ti. Sin compromiso, con total claridad sobre el proceso.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm" class="form">
+                        <h3>Solicita Tu Primera Sesión</h3>
+                        <p class="form-subtitle">Cuéntame sobre tu situación actual y comenzemos tu transformación</p>
+                        <div class="form-group">
+                            <label for="nombre">Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">WhatsApp / Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="zona">Zona horaria / País</label>
+                            <input type="text" id="zona" name="zona" placeholder="Ej: España, México, Argentina..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="situacion">¿Cuál es tu situación actual?</label>
+                            <textarea id="situacion" name="situacion" rows="4" placeholder="Describe brevemente qué te está limitando o qué quieres transformar en tu vida..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="urgencia">¿Qué tan urgente sientes que es tu transformación?</label>
+                            <select id="urgencia" name="urgencia" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="muy-urgente">Muy urgente - Necesito cambios ya</option>
+                                <option value="urgente">Urgente - En las próximas semanas</option>
+                                <option value="importante">Importante - En el próximo mes</option>
+                                <option value="exploratorio">Solo explorando - Sin prisa</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Solicitar Primera Sesión Exploratoria</button>
+                        <p class="form-note">
+                            <i class="fas fa-shield-alt"></i>
+                            Tu información es completamente confidencial y solo será usada para contactarte.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="nav-brand">
+                        <i class="fas fa-eye logo-icon"></i>
+                        <span class="brand-text">Luis Virrueta</span>
+                    </div>
+                    <p>Psicología de la Creencia</p>
+                    <p><em>"Transforma tus creencias, transforma tu vida"</em></p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Mi Método</h4>
+                        <ul>
+                            <li><a href="#metodo">Psicología de la Creencia</a></li>
+                            <li><a href="#transformacion">Técnicas Únicas</a></li>
+                            <li><a href="#diferencia">La Diferencia</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Transformación</h4>
+                        <ul>
+                            <li><a href="#metodo">3 Dimensiones</a></li>
+                            <li><a href="#sesion">Primera Sesión</a></li>
+                            <li><a href="#quien-soy">Mi Historia</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Preguntas Profundas</h4>
+                        <ul>
+                            <li><a href="#diferencia">¿Qué es la existencia?</a></li>
+                            <li><a href="#diferencia">¿Cuál es mi propósito?</a></li>
+                            <li><a href="#diferencia">¿Quién soy realmente?</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <h4>Conéctate</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                    <div class="footer-location">
+                        <p><i class="fas fa-map-marker-alt"></i> Viviendo en Europa</p>
+                        <p><i class="fas fa-globe"></i> Sesiones Online Globales</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Luis Virrueta - Psicología de la Creencia. Transformando vidas sin limitaciones.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sistema de Agenda Transformadora Modal -->
+    <div id="agendaModal" class="agenda-modal"></div>
+
+    <!-- Botón Debug - Borrar Caché -->
+    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+        <button onclick="debugResetCache()" 
+                style="background: #ff4757; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3); transition: all 0.3s ease;"
+                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 71, 87, 0.4)'"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255, 71, 87, 0.3)'">
+            🗑️ Borrar Caché
+        </button>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/agenda.js"></script>
+    <script>
+        // Inicializar sistema de agenda
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                window.agendaSystem = new AgendaTransformadora();
+                console.log('Sistema de agenda inicializado correctamente');
+            } catch (error) {
+                console.error('Error inicializando sistema de agenda:', error);
+            }
+            
+
+            
+            // Mejorar experiencia táctil en móvil
+            const navLinks = document.querySelectorAll('.nav-menu .nav-link');
+            
+            navLinks.forEach(link => {
+                // Touch start - mostrar hover inmediatamente
+                link.addEventListener('touchstart', function(e) {
+                    // Remover hover de otros links
+                    navLinks.forEach(otherLink => {
+                        if (otherLink !== this) {
+                            otherLink.classList.remove('touch-active');
+                        }
+                    });
+                    // Agregar hover a este link
+                    this.classList.add('touch-active');
+                }, { passive: true });
+                
+                // Touch end - mantener un poco el hover
+                link.addEventListener('touchend', function(e) {
+                    setTimeout(() => {
+                        this.classList.remove('touch-active');
+                    }, 150);
+                }, { passive: true });
+                
+                // Touch cancel - remover hover
+                link.addEventListener('touchcancel', function(e) {
+                    this.classList.remove('touch-active');
+                }, { passive: true });
+            });
+        });
+
+        // Sistema de Agenda Simplificado pero Funcional
+        function abrirAgendaSimple() {
+            console.log('Abriendo sistema de agenda...');
+            
+            // Crear modal de agenda si no existe
+            let agendaModal = document.getElementById('agendaModalSimple');
+            if (!agendaModal) {
+                agendaModal = document.createElement('div');
+                agendaModal.id = 'agendaModalSimple';
+                agendaModal.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.8);
+                        z-index: 9999;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        backdrop-filter: blur(5px);
+                    ">
+                        <div style="
+                            background: white;
+                            padding: 2rem;
+                            border-radius: 20px;
+                            max-width: 600px;
+                            width: 90%;
+                            max-height: 90vh;
+                            overflow-y: auto;
+                            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                        ">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                                <h2 style="color: #667eea; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fas fa-calendar-alt"></i> Agenda tu Primera Sesión
+                                </h2>
+                                <button onclick="cerrarAgendaSimple()" style="
+                                    background: none;
+                                    border: none;
+                                    font-size: 1.5rem;
+                                    cursor: pointer;
+                                    color: #666;
+                                    padding: 0.5rem;
+                                    border-radius: 50%;
+                                    width: 40px;
+                                    height: 40px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                ">&times;</button>
+                            </div>
+                            
+                            <div style="margin-bottom: 2rem;">
+                                <h3 style="color: #2d3748; margin-bottom: 1rem;">Sesión Exploratoria GRATUITA</h3>
+                                <p style="color: #4a5568; line-height: 1.6; margin-bottom: 1.5rem;">
+                                    En esta primera sesión de 60 minutos descubriremos juntos la creencia raíz 
+                                    que está limitando tu vida. Es completamente <strong>GRATUITA</strong> y sin compromiso.
+                                </p>
+                                
+                                <div style="background: #f7fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                                    <h4 style="color: #667eea; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                        <i class="fas fa-gift"></i> ¿Qué incluye?
+                                    </h4>
+                                    <ul style="color: #4a5568; line-height: 1.8; margin: 0; padding-left: 1.2rem;">
+                                        <li>Diagnóstico de tu situación actual</li>
+                                        <li>Identificación de tu creencia raíz limitante</li>
+                                        <li>Plan personalizado de transformación</li>
+                                        <li>Herramientas inmediatas para empezar el cambio</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <a href="mailto:luis@psicologiadelacreencia.com?subject=Solicitud de Primera Sesión Gratuita&body=Hola Luis,%0D%0A%0D%0AMe interesa agendar mi primera sesión gratuita de Psicología de la Creencia.%0D%0A%0D%0AMis datos de contacto son:%0D%0ANombre:%0D%0ATeléfono:%0D%0A%0D%0AGracias." 
+                                   style="
+                                    display: inline-block;
+                                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                    color: white;
+                                    text-decoration: none;
+                                    padding: 1rem 2rem;
+                                    border-radius: 12px;
+                                    font-weight: 600;
+                                    font-size: 1.1rem;
+                                    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+                                    transition: all 0.3s ease;
+                                    margin-bottom: 1rem;
+                                ">
+                                    <i class="fas fa-envelope"></i> Solicitar Primera Sesión Gratuita
+                                </a>
+                                
+                                <p style="color: #666; font-size: 0.9rem; margin-top: 1rem;">
+                                    Te responderé personalmente en menos de 24 horas
+                                </p>
+                                
+                                <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+                                    <p style="color: #4a5568; font-size: 0.9rem; margin: 0;">
+                                        <i class="fas fa-video"></i> Sesiones online • 
+                                        <i class="fas fa-clock"></i> 60 minutos • 
+                                        <i class="fas fa-gift"></i> Completamente gratuita
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(agendaModal);
+            }
+            
+            agendaModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function cerrarAgendaSimple() {
+            const agendaModal = document.getElementById('agendaModalSimple');
+            if (agendaModal) {
+                agendaModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+
+
+        // Función para abrir agenda con mejor manejo de errores
+        function abrirAgenda() {
+            try {
+                if (window.agendaSystem && typeof window.agendaSystem.openModal === 'function') {
+                    window.agendaSystem.openModal();
+                } else {
+                    console.error('Sistema de agenda no disponible');
+                    alert('El sistema de citas está cargando. Por favor, intenta de nuevo en un momento.');
+                }
+            } catch (error) {
+                console.error('Error abriendo modal:', error);
+                alert('Hubo un problema al abrir el sistema de citas. Por favor, recarga la página e intenta de nuevo.');
+            }
+        }
+    </script>
+</body>
+</html>

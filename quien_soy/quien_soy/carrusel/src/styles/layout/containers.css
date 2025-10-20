@@ -1,0 +1,240 @@
+/* ========================================
+   LAYOUT - CONTAINERS & SPACING
+   ======================================== */
+
+/* Main Container System */
+.container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+}
+
+/* Container Variations */
+.container--narrow {
+    max-width: 768px;
+}
+
+.container--wide {
+    max-width: 1400px;
+}
+
+.container--full {
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.container--fluid {
+    max-width: none;
+}
+
+/* Section Containers */
+.section {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+}
+
+.section--sm {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+}
+
+.section--lg {
+    padding-top: var(--space-24);
+    padding-bottom: var(--space-24);
+}
+
+.section--hero {
+    padding-top: calc(var(--space-24) + 80px); /* Account for fixed header */
+    padding-bottom: var(--space-24);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Content Wrappers */
+.content-wrapper {
+    max-width: 65ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-wrapper--wide {
+    max-width: 75ch;
+}
+
+.content-wrapper--narrow {
+    max-width: 55ch;
+}
+
+/* Flexbox Layout Utilities */
+.flex-container {
+    display: flex;
+    gap: var(--space-4);
+}
+
+.flex-container--column {
+    flex-direction: column;
+}
+
+.flex-container--center {
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-container--between {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-container--wrap {
+    flex-wrap: wrap;
+}
+
+/* Stack Layout (Vertical Spacing) */
+.stack {
+    display: flex;
+    flex-direction: column;
+}
+
+.stack > * + * {
+    margin-top: var(--space-4);
+}
+
+.stack--sm > * + * {
+    margin-top: var(--space-2);
+}
+
+.stack--lg > * + * {
+    margin-top: var(--space-6);
+}
+
+.stack--xl > * + * {
+    margin-top: var(--space-8);
+}
+
+/* Cluster Layout (Horizontal Grouping) */
+.cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: center;
+}
+
+.cluster--sm {
+    gap: var(--space-2);
+}
+
+.cluster--lg {
+    gap: var(--space-6);
+}
+
+.cluster--center {
+    justify-content: center;
+}
+
+.cluster--end {
+    justify-content: flex-end;
+}
+
+/* Sidebar Layout */
+.sidebar-layout {
+    display: flex;
+    gap: var(--space-8);
+    align-items: flex-start;
+}
+
+.sidebar-layout > :first-child {
+    flex-basis: 250px;
+    flex-shrink: 0;
+}
+
+.sidebar-layout > :last-child {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+/* Cover Layout (Full Height) */
+.cover {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: var(--space-4);
+}
+
+.cover > * {
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+
+.cover > :first-child:not(.cover-center) {
+    margin-top: 0;
+}
+
+.cover > :last-child:not(.cover-center) {
+    margin-bottom: 0;
+}
+
+.cover-center {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* Responsive Spacing */
+@media (max-width: 640px) {
+    .container {
+        padding-left: var(--space-4);
+        padding-right: var(--space-4);
+    }
+    
+    .section {
+        padding-top: var(--space-12);
+        padding-bottom: var(--space-12);
+    }
+    
+    .section--lg {
+        padding-top: var(--space-16);
+        padding-bottom: var(--space-16);
+    }
+    
+    .section--hero {
+        padding-top: calc(var(--space-16) + 70px);
+        padding-bottom: var(--space-16);
+    }
+    
+    .flex-container {
+        gap: var(--space-3);
+    }
+    
+    .sidebar-layout {
+        flex-direction: column;
+        gap: var(--space-6);
+    }
+    
+    .sidebar-layout > :first-child {
+        flex-basis: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .section--hero {
+        min-height: auto;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .container {
+        max-width: none;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .section {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+}

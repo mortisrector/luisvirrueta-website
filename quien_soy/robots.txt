@@ -1,0 +1,43 @@
+# Robots.txt para Luis Virrueta - Psicología de la Creencia
+
+# Permitir acceso a todos los bots de búsqueda
+User-agent: *
+Allow: /
+
+# Bloquear archivos y directorios privados
+Disallow: /src/
+Disallow: /backup_v1.0/
+Disallow: /config/
+Disallow: /tools/
+Disallow: /*.json$
+Disallow: /*.md$
+Disallow: /.*
+
+# Permitir acceso específico a recursos importantes
+Allow: /src/assets/images/
+Allow: /blog/
+Allow: /sitemap.xml
+Allow: /site.webmanifest
+
+# Tiempo de rastreo (opcional)
+Crawl-delay: 1
+
+# Ubicación del sitemap
+Sitemap: https://luisvirrueta.com/sitemap.xml
+
+# Bots específicos
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Bloquear bots maliciosos
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /

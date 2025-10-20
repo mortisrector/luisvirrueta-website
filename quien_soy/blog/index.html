@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Psicología de la Creencia | Luis Virrueta</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Descubre artículos profundos sobre transformación personal, creencias limitantes y crecimiento humano por Luis Virrueta, experto en Psicología de la Creencia.">
+    <meta name="keywords" content="psicología, creencias, transformación personal, desarrollo personal, Luis Virrueta, crecimiento humano">
+    <meta name="author" content="Luis Virrueta">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Blog - Psicología de la Creencia">
+    <meta property="og:description" content="Artículos sobre transformación personal y liberación de creencias limitantes">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://psicologiacreencia.com/blog">
+    <meta property="og:image" content="https://psicologiacreencia.com/blog/assets/blog-cover.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog - Psicología de la Creencia">
+    <meta name="twitter:description" content="Artículos sobre transformación personal y liberación de creencias limitantes">
+    <meta name="twitter:image" content="https://psicologiacreencia.com/blog/assets/blog-cover.jpg">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/blog-core.css">
+    <link rel="stylesheet" href="css/blog-components.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Navigation Styles -->
+    <style>
+        /* Navigation Styles - Consistent with main page */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar {
+            width: 100%;
+        }
+        
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+        
+        /* Brand */
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .logo-icon {
+            font-size: 1.5rem;
+            color: #667eea;
+        }
+        
+        .brand-text {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+        
+        .brand-title {
+            font-weight: 400;
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        .brand-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        
+        /* Navigation */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+        
+        .nav-link.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        /* Tools Dropdown Desktop */
+        .nav-tools-dropdown {
+            position: relative;
+        }
+        
+        .tools-main-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .dropdown-icon {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-tools-dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+        
+        .tools-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            padding: 1rem;
+            min-width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            margin-top: 0.5rem;
+        }
+        
+        .nav-tools-dropdown:hover .tools-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+        
+        .dropdown-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .dropdown-item.active {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+        
+        .dropdown-item i {
+            width: 20px;
+            text-align: center;
+            color: #667eea;
+        }
+        
+        .item-content h5 {
+            margin-bottom: 0.25rem;
+            color: #333;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .item-content p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+        
+        /* Mobile Toggle */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            gap: 4px;
+            z-index: 1001;
+        }
+        
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        .nav-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .nav-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+        
+        /* Mobile Overlay */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 2rem 1rem;
+                transform: translateX(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                z-index: 999;
+                gap: 1.5rem;
+                overflow-y: auto;
+                box-sizing: border-box;
+            }
+            
+            .nav-menu.active {
+                transform: translateX(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-menu li {
+                width: 100%;
+                max-width: 320px;
+                margin: 0;
+                list-style: none;
+            }
+            
+            .nav-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                padding: 1.2rem 1.5rem;
+                font-size: 1.1rem;
+                font-weight: 500;
+                text-align: center;
+                border-radius: 12px;
+                background: rgba(103, 126, 234, 0.08);
+                margin: 0 0 0.75rem 0;
+                text-decoration: none;
+                color: #333;
+                transition: all 0.3s ease;
+                box-sizing: border-box;
+                min-height: 56px;
+            }
+            
+            .nav-link:hover,
+            .nav-link:focus,
+            .nav-link.active {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            }
+            
+            /* Reset desktop styles for mobile */
+            .nav-tools-dropdown {
+                width: 100%;
+                max-width: 320px;
+                position: static;
+            }
+            
+            .nav-tools-dropdown:hover .dropdown-icon {
+                transform: none;
+            }
+            
+            .nav-tools-dropdown:hover .tools-dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+            
+            .tools-main-link {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                padding: 1.2rem 1.5rem;
+                font-size: 1.1rem;
+                font-weight: 500;
+                text-align: left;
+                border-radius: 12px;
+                background: rgba(103, 126, 234, 0.08);
+                margin: 0 0 0.75rem 0;
+                text-decoration: none;
+                color: #333;
+                transition: all 0.3s ease;
+                box-sizing: border-box;
+                min-height: 56px;
+            }
+            
+            .tools-main-link.active {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+            }
+            
+            .tools-text-container {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            
+            .tools-text-container i {
+                font-size: 1.1rem;
+                color: #667eea;
+            }
+            
+            .tools-main-link.active .tools-text-container i {
+                color: white;
+            }
+            
+            .dropdown-icon {
+                font-size: 0.9rem;
+                color: #667eea;
+                transition: transform 0.3s ease;
+            }
+            
+            .tools-main-link.active .dropdown-icon {
+                color: white;
+            }
+            
+            .nav-tools-dropdown.expanded .dropdown-icon {
+                transform: rotate(180deg);
+            }
+            
+            .tools-dropdown-menu {
+                position: static !important;
+                transform: none !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                width: 100%;
+                background: rgba(103, 126, 234, 0.05);
+                border-radius: 12px;
+                padding: 0;
+                margin: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                box-sizing: border-box;
+                box-shadow: none;
+                z-index: auto;
+                min-width: auto;
+            }
+            
+            .nav-tools-dropdown.expanded .tools-dropdown-menu {
+                max-height: 250px;
+                padding: 1rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .dropdown-item {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                padding: 1rem;
+                border-radius: 8px;
+                text-decoration: none;
+                color: #333;
+                background: white;
+                margin-bottom: 0.75rem;
+                transition: all 0.3s ease;
+                box-sizing: border-box;
+            }
+            
+            .dropdown-item:last-child {
+                margin-bottom: 0;
+            }
+            
+            .dropdown-item:hover,
+            .dropdown-item.active {
+                background: rgba(102, 126, 234, 0.1);
+                transform: translateX(5px);
+                color: #667eea;
+            }
+            
+            .dropdown-item i {
+                width: 20px;
+                text-align: center;
+                color: #667eea;
+                flex-shrink: 0;
+            }
+            
+            .item-content {
+                flex: 1;
+            }
+            
+            .item-content h5 {
+                margin: 0 0 0.25rem 0;
+                color: #333;
+                font-size: 1rem;
+                font-weight: 600;
+            }
+            
+            .item-content p {
+                margin: 0;
+                font-size: 0.9rem;
+                color: #666;
+                line-height: 1.3;
+            }
+            
+            /* Prevent body scroll when menu is open */
+            body.menu-open {
+                overflow: hidden;
+                position: fixed;
+                width: 100%;
+            }
+        }
+        
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .nav-menu {
+                padding: 1.5rem 0.75rem;
+                gap: 1.25rem;
+            }
+            
+            .nav-menu li {
+                max-width: 280px;
+            }
+            
+            .nav-link,
+            .tools-main-link {
+                padding: 1rem 1.25rem;
+                font-size: 1rem;
+                min-height: 52px;
+            }
+        }
+        
+        /* Override blog styles */
+        .blog-hero {
+            margin-top: 70px;
+            padding-top: 2rem;
+        }
+    </style>
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Psicología de la Creencia - Blog",
+        "description": "Blog sobre transformación personal y liberación de creencias limitantes",
+        "url": "https://psicologiacreencia.com/blog",
+        "author": {
+            "@type": "Person",
+            "name": "Luis Virrueta",
+            "jobTitle": "Especialista en Psicología de la Creencia",
+            "url": "https://psicologiacreencia.com"
+        }
+    }
+    </script>
+</head>
+
+<body data-theme="light">
+    <!-- Progress Bar -->
+    <div class="reading-progress">
+        <div class="reading-progress__bar"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand/Logo -->
+                <div class="nav-brand">
+                    <i class="fas fa-eye logo-icon"></i>
+                    <span class="brand-text">
+                        <span class="brand-title">Psic.</span> 
+                        <span class="brand-name">Luis Virrueta</span>
+                    </span>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <!-- Navigation Menu -->
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../index.html#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="../index.html#metodo" class="nav-link">Mi Método</a></li>
+                    <li><a href="../index.html#transformacion" class="nav-link">Transformación</a></li>
+                    <li><a href="../index.html#quien-soy" class="nav-link">¿Quién Soy?</a></li>
+                    
+                    <!-- Tools Dropdown -->
+                    <li class="nav-tools-dropdown">
+                        <a href="#" class="nav-link tools-main-link active">
+                            <span class="tools-text-container">
+                                <i class="fas fa-tools"></i>
+                                <span>Herramientas</span>
+                            </span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        
+                        <div class="tools-dropdown-menu">
+                            <a href="index.html" class="dropdown-item active">
+                                <i class="fas fa-feather-alt"></i>
+                                <div class="item-content">
+                                    <h5>Blog</h5>
+                                    <p>Artículos y reflexiones</p>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-tools"></i>
+                                <div class="item-content">
+                                    <h5>Herramientas</h5>
+                                    <p>Recursos prácticos</p>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-microphone"></i>
+                                <div class="item-content">
+                                    <h5>Podcast</h5>
+                                    <p>Conversaciones profundas</p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="../index.html#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- Mobile Overlay -->
+        <div class="nav-overlay" id="nav-overlay"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="blog-hero">
+        <div class="blog-container">
+            <div class="blog-hero__content">
+                <h1 class="blog-hero__title animate-slide-up">
+                    Transforma tu realidad desde 
+                    <span class="text-gradient">la raíz de tus creencias</span>
+                </h1>
+                <p class="blog-hero__subtitle animate-slide-up">
+                    Artículos profundos sobre psicología, transformación personal y liberación 
+                    de patrones mentales limitantes. Basados en años de investigación y experiencia práctica.
+                </p>
+                
+                <!-- Newsletter Signup -->
+                <div class="newsletter-signup animate-slide-up">
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input 
+                            type="email" 
+                            placeholder="Tu email para recibir artículos exclusivos"
+                            class="newsletter-input"
+                            required
+                        >
+                        <button type="submit" class="newsletter-btn">
+                            <span>Suscribirse</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+                    <p class="newsletter-privacy">
+                        <i class="fas fa-lock"></i>
+                        Tu privacidad es importante. Sin spam, solo contenido valioso.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Filters & Search -->
+    <section class="blog-main">
+        <div class="blog-container">
+            <div class="blog-filters animate-slide-left">
+                <!-- Search Bar -->
+                <div class="blog-search">
+                    <i class="fas fa-search blog-search__icon"></i>
+                    <input 
+                        type="text" 
+                        placeholder="Buscar artículos..." 
+                        class="blog-search__input"
+                        id="searchInput"
+                    >
+                </div>
+                
+                <!-- Category Filters -->
+                <div class="blog-categories">
+                    <button class="blog-category-btn active" data-category="all">
+                        Todos
+                    </button>
+                    <button class="blog-category-btn" data-category="transformacion">
+                        Transformación
+                    </button>
+                    <button class="blog-category-btn" data-category="creencias">
+                        Creencias
+                    </button>
+                    <button class="blog-category-btn" data-category="casos">
+                        Casos de Éxito
+                    </button>
+                    <button class="blog-category-btn" data-category="tecnicas">
+                        Técnicas
+                    </button>
+                    <button class="blog-category-btn" data-category="investigacion">
+                        Investigación
+                    </button>
+                </div>
+            </div>
+
+            <!-- Blog Stats -->
+            <div class="blog-stats">
+                <div class="blog-stats__item">
+                    <span class="blog-stats__number" id="totalArticles">12</span>
+                    <span class="blog-stats__label">Artículos</span>
+                </div>
+                <div class="blog-stats__item">
+                    <span class="blog-stats__number">4.9</span>
+                    <span class="blog-stats__label">Rating Promedio</span>
+                </div>
+                <div class="blog-stats__item">
+                    <span class="blog-stats__number">2.5K</span>
+                    <span class="blog-stats__label">Lectores Mensuales</span>
+                </div>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="blog-grid" id="blogGrid">
+                <!-- Article Cards - Static fallback content -->
+                <article class="blog-card featured-article">
+                    <div class="card-image-container">
+                        <div class="card-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+                            <div class="placeholder-content">
+                                <i class="fas fa-brain"></i>
+                                <span>Filosofía</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card-overlay">
+                            <div class="card-badges">
+                                <span class="featured-badge"><i class="fas fa-star"></i> Destacado</span>
+                                <span class="category-badge filosofía">Filosofía</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div class="card-meta-header">
+                            <div class="author-info">
+                                <div class="avatar-placeholder">LV</div>
+                                <div class="author-details">
+                                    <div class="author-name">Luis Virrueta</div>
+                                    <div class="publish-date">2025-09-29</div>
+                                </div>
+                            </div>
+                            <div class="read-time">
+                                <i class="fas fa-clock"></i>
+                                15 min
+                            </div>
+                        </div>
+                        
+                        <h2 class="card-title">
+                            <a href="articulos/2025-09-29-del-perro-que-me-ama-al-vacio-que-me-habita/" class="card-link">Del perro que me ama al vacío que me habita</a>
+                        </h2>
+                        
+                        <p class="card-excerpt">Un viaje profundo desde la búsqueda del amor hacia la habitación del vacío como gracia. Una reflexión sobre cómo transitamos del amor como necesidad al vacío como libertad.</p>
+                        
+                        <div class="card-footer">
+                            <div class="card-engagement">
+                                <span class="engagement-item">
+                                    <i class="fas fa-eye"></i>
+                                    1250
+                                </span>
+                                <span class="engagement-item">
+                                    <i class="fas fa-comments"></i>
+                                    47
+                                </span>
+                                <span class="engagement-item">
+                                    <i class="fas fa-star"></i>
+                                    4.9
+                                </span>
+                            </div>
+                            
+                            <a href="articulos/2025-09-29-del-perro-que-me-ama-al-vacio-que-me-habita/" class="read-more-btn">
+                                Leer más
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card featured-article">
+                    <div class="card-image-container">
+                        <div class="card-placeholder" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)">
+                            <div class="placeholder-content">
+                                <i class="fas fa-brain"></i>
+                                <span>Transformación</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card-overlay">
+                            <div class="card-badges">
+                                <span class="featured-badge"><i class="fas fa-star"></i> Destacado</span>
+                                <span class="category-badge transformación">Transformación</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div class="card-meta-header">
+                            <div class="author-info">
+                                <div class="avatar-placeholder">LV</div>
+                                <div class="author-details">
+                                    <div class="author-name">Luis Virrueta</div>
+                                    <div class="publish-date">2025-09-25</div>
+                                </div>
+                            </div>
+                            <div class="read-time">
+                                <i class="fas fa-clock"></i>
+                                12 min
+                            </div>
+                        </div>
+                        
+                        <h2 class="card-title">
+                            <a href="articulos/la-creencia-raiz-origen-patrones/" class="card-link">La Creencia Raíz: El Origen de Todos los Patrones</a>
+                        </h2>
+                        
+                        <p class="card-excerpt">Descubre cómo una sola creencia formada en la infancia puede gobernar toda tu vida adulta y la metodología exacta para identificarla y transformarla.</p>
+                        
+                        <div class="card-footer">
+                            <div class="card-engagement">
+                                <span class="engagement-item">
+                                    <i class="fas fa-eye"></i>
+                                    890
+                                </span>
+                                <span class="engagement-item">
+                                    <i class="fas fa-comments"></i>
+                                    31
+                                </span>
+                                <span class="engagement-item">
+                                    <i class="fas fa-star"></i>
+                                    4.8
+                                </span>
+                            </div>
+                            
+                            <a href="articulos/la-creencia-raiz-origen-patrones/" class="read-more-btn">
+                                Leer más
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="card-image-container">
+                        <div class="card-placeholder" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)">
+                            <div class="placeholder-content">
+                                <i class="fas fa-brain"></i>
+                                <span>Casos</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card-overlay">
+                            <div class="card-badges">
+                                <span class="category-badge casos">Casos</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div class="card-meta-header">
+                            <div class="author-info">
+                                <div class="avatar-placeholder">LV</div>
+                                <div class="author-details">
+                                    <div class="author-name">Luis Virrueta</div>
+                                    <div class="publish-date">2025-09-20</div>
+                                </div>
+                            </div>
+                            <div class="read-time">
+                                <i class="fas fa-clock"></i>
+                                10 min
+                            </div>
+                        </div>
+                        
+                        <h2 class="card-title">
+                            <a href="articulos/casos-exito-ansiedad-paz/" class="card-link">Casos de Éxito: De la Ansiedad Crónica a la Paz Interior</a>
+                        </h2>
+                        
+                        <p class="card-excerpt">La historia de María, quien después de 15 años de ansiedad, encontró la paz en 3 sesiones al descubrir la creencia que la mantenía prisionera.</p>
+                        
+                        <div class="card-footer">
+                            <div class="card-engagement">
+                                <span class="engagement-item">
+                                    <i class="fas fa-eye"></i>
+                                    675
+                                </span>
+                                <span class="engagement-item">
+                                    <i class="fas fa-comments"></i>
+                                    28
+                                </span>
+                                <span class="engagement-item">
+                                    <i class="fas fa-star"></i>
+                                    4.7
+                                </span>
+                            </div>
+                            
+                            <a href="articulos/casos-exito-ansiedad-paz/" class="read-more-btn">
+                                Leer más
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card featured-article">
+                    <div class="card-image-container">
+                        <div class="card-placeholder" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)">
+                            <div class="placeholder-content">
+                                <i class="fas fa-brain"></i>
+                                <span>Técnicas</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card-overlay">
+                            <div class="card-badges">
+                                <span class="featured-badge"><i class="fas fa-star"></i> Destacado</span>
+                                <span class="category-badge técnicas">Técnicas</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div class="card-meta-header">
+                            <div class="author-info">
+                                <div class="avatar-placeholder">LV</div>
+                                <div class="author-details">
+                                    <div class="author-name">Luis Virrueta</div>
+                                    <div class="publish-date">2025-09-15</div>
+                                </div>
+                            </div>
+                            <div class="read-time">
+                                <i class="fas fa-clock"></i>
+                                18 min
+                            </div>
+                        </div>
+                        
+                        <h2 class="card-title">
+                            <a href="articulos/tecnica-espejo-invertido/" class="card-link">La Técnica del Espejo Invertido: Revolucionando la Terapia</a>
+                        </h2>
+                        
+                        <p class="card-excerpt">Una técnica innovadora que permite acceder directamente al inconsciente y reprogramar creencias limitantes en tiempo real.</p>
+                        
+                        <div class="card-footer">
+                            <div class="card-engagement">
+                                <span class="engagement-item">
+                                    <i class="fas fa-eye"></i>
+                                    1180
+                                </span>
+                                <span class="engagement-item">
+                                    <i class="fas fa-comments"></i>
+                                    52
+                                </span>
+                                <span class="engagement-item">
+                                    <i class="fas fa-star"></i>
+                                    4.9
+                                </span>
+                            </div>
+                            
+                            <a href="articulos/tecnica-espejo-invertido/" class="read-more-btn">
+                                Leer más
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="card-image-container">
+                        <div class="card-placeholder" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%)">
+                            <div class="placeholder-content">
+                                <i class="fas fa-brain"></i>
+                                <span>Investigación</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card-overlay">
+                            <div class="card-badges">
+                                <span class="category-badge investigación">Investigación</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div class="card-meta-header">
+                            <div class="author-info">
+                                <div class="avatar-placeholder">LV</div>
+                                <div class="author-details">
+                                    <div class="author-name">Luis Virrueta</div>
+                                    <div class="publish-date">2025-09-10</div>
+                                </div>
+                            </div>
+                            <div class="read-time">
+                                <i class="fas fa-clock"></i>
+                                22 min
+                            </div>
+                        </div>
+                        
+                        <h2 class="card-title">
+                            <a href="articulos/investigacion-impacto-neurologico-creencias/" class="card-link">Investigación: El Impacto Neurológico de las Creencias</a>
+                        </h2>
+                        
+                        <p class="card-excerpt">Nuevos hallazgos científicos demuestran cómo las creencias modifican físicamente la estructura cerebral y cómo podemos usar esto para la sanación.</p>
+                        
+                        <div class="card-footer">
+                            <div class="card-engagement">
+                                <span class="engagement-item">
+                                    <i class="fas fa-eye"></i>
+                                    542
+                                </span>
+                                <span class="engagement-item">
+                                    <i class="fas fa-comments"></i>
+                                    19
+                                </span>
+                                <span class="engagement-item">
+                                    <i class="fas fa-star"></i>
+                                    4.8
+                                </span>
+                            </div>
+                            
+                            <a href="articulos/investigacion-impacto-neurologico-creencias/" class="read-more-btn">
+                                Leer más
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="card-image-container">
+                        <div class="card-placeholder" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)">
+                            <div class="placeholder-content">
+                                <i class="fas fa-brain"></i>
+                                <span>Filosofía</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card-overlay">
+                            <div class="card-badges">
+                                <span class="category-badge filosofía">Filosofía</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div class="card-meta-header">
+                            <div class="author-info">
+                                <div class="avatar-placeholder">LV</div>
+                                <div class="author-details">
+                                    <div class="author-name">Luis Virrueta</div>
+                                    <div class="publish-date">2025-09-05</div>
+                                </div>
+                            </div>
+                            <div class="read-time">
+                                <i class="fas fa-clock"></i>
+                                14 min
+                            </div>
+                        </div>
+                        
+                        <h2 class="card-title">
+                            <a href="articulos/mito-amor-propio-no-funciona/" class="card-link">El Mito del Amor Propio: Por Qué No Funciona</a>
+                        </h2>
+                        
+                        <p class="card-excerpt">Análisis profundo de por qué el concepto moderno de 'amor propio' mantiene a las personas atrapadas en ciclos de autojuicio y la alternativa liberadora.</p>
+                        
+                        <div class="card-footer">
+                            <div class="card-engagement">
+                                <span class="engagement-item">
+                                    <i class="fas fa-eye"></i>
+                                    720
+                                </span>
+                                <span class="engagement-item">
+                                    <i class="fas fa-comments"></i>
+                                    34
+                                </span>
+                                <span class="engagement-item">
+                                    <i class="fas fa-star"></i>
+                                    4.6
+                                </span>
+                            </div>
+                            
+                            <a href="articulos/mito-amor-propio-no-funciona/" class="read-more-btn">
+                                Leer más
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="blog-load-more">
+                <button class="load-more-btn" id="loadMoreBtn">
+                    <span>Cargar más artículos</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+
+            <!-- No Results State -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <div class="no-results__content">
+                    <i class="fas fa-search no-results__icon"></i>
+                    <h3 class="no-results__title">No se encontraron artículos</h3>
+                    <p class="no-results__text">
+                        Intenta con otros términos de búsqueda o explora nuestras categorías.
+                    </p>
+                    <button class="btn btn--primary" onclick="clearSearch()">
+                        Ver todos los artículos
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions">
+        <!-- Back to Top -->
+        <button class="floating-btn" id="backToTop" title="Ir arriba">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+        
+        <!-- Search Toggle -->
+        <button class="floating-btn floating-btn--secondary" id="searchToggle" title="Buscar">
+            <i class="fas fa-search"></i>
+        </button>
+        
+        <!-- Dark Mode Toggle -->
+        <button class="floating-btn floating-btn--secondary" id="darkModeToggle" title="Cambiar tema">
+            <i class="fas fa-moon"></i>
+        </button>
+        
+        <!-- Share Blog -->
+        <button class="floating-btn floating-btn--secondary" id="shareBlog" title="Compartir blog">
+            <i class="fas fa-share-alt"></i>
+        </button>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="share-modal" id="shareModal">
+        <div class="share-modal__backdrop"></div>
+        <div class="share-modal__content">
+            <div class="share-modal__header">
+                <h3>Compartir Blog</h3>
+                <button class="share-modal__close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="share-modal__body">
+                <div class="share-options">
+                    <button class="share-btn share-btn--whatsapp" data-platform="whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </button>
+                    <button class="share-btn share-btn--facebook" data-platform="facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Facebook</span>
+                    </button>
+                    <button class="share-btn share-btn--twitter" data-platform="twitter">
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter</span>
+                    </button>
+                    <button class="share-btn share-btn--linkedin" data-platform="linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>LinkedIn</span>
+                    </button>
+                    <button class="share-btn share-btn--telegram" data-platform="telegram">
+                        <i class="fab fa-telegram-plane"></i>
+                        <span>Telegram</span>
+                    </button>
+                    <button class="share-btn share-btn--copy" data-platform="copy">
+                        <i class="fas fa-copy"></i>
+                        <span>Copiar enlace</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Footer -->
+    <footer class="blog-footer">
+        <div class="blog-container">
+            <div class="blog-footer__content">
+                <div class="blog-footer__brand">
+                    <h3 class="text-gradient">Luis Virrueta</h3>
+                    <p>Especialista en Psicología de la Creencia</p>
+                    <p>Transformando vidas a través de la liberación de creencias limitantes</p>
+                </div>
+                
+                <div class="blog-footer__links">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="index.html">Blog</a></li>
+                        <li><a href="../index.html#servicios">Servicios</a></li>
+                        <li><a href="../index.html#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="blog-footer__social">
+                    <h4>Sígueme</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="blog-footer__bottom">
+                <p>&copy; 2025 Luis Virrueta - Psicología de la Creencia. Todos los derechos reservados.</p>
+                <div class="blog-footer__legal">
+                    <a href="#privacy">Privacidad</a>
+                    <a href="#terms">Términos</a>
+                    <a href="#cookies">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <script src="js/blog-app.js"></script>
+    
+    <!-- Navigation Script -->
+    <script>
+        console.log('🚀 Blog Navigation Loading...');
+        
+        // Navigation functionality
+        function initNavigation() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            const navOverlay = document.getElementById('nav-overlay');
+            const toolsDropdown = document.querySelector('.nav-tools-dropdown');
+            
+            if (!navToggle || !navMenu) return;
+            
+            let isMenuOpen = false;
+            
+            // Toggle menu
+            function toggleMenu() {
+                isMenuOpen = !isMenuOpen;
+                navMenu.classList.toggle('active', isMenuOpen);
+                navToggle.classList.toggle('active', isMenuOpen);
+                if (navOverlay) {
+                    navOverlay.classList.toggle('active', isMenuOpen);
+                }
+                
+                if (isMenuOpen) {
+                    document.body.classList.add('menu-open');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.classList.remove('menu-open');
+                    document.body.style.overflow = '';
+                }
+            }
+            
+            // Close menu
+            function closeMenu() {
+                isMenuOpen = false;
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                document.body.style.overflow = '';
+                
+                if (navOverlay) {
+                    navOverlay.classList.remove('active');
+                }
+                if (toolsDropdown) {
+                    toolsDropdown.classList.remove('expanded');
+                }
+            }
+            
+            // Events
+            navToggle.addEventListener('click', toggleMenu);
+            
+            if (navOverlay) {
+                navOverlay.addEventListener('click', closeMenu);
+            }
+            
+            // Close menu when clicking nav links (except tools dropdown)
+            const navLinks = navMenu.querySelectorAll('.nav-link:not(.tools-main-link)');
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+            
+            // Tools dropdown functionality
+            const toolsMainLink = document.querySelector('.tools-main-link');
+            if (toolsMainLink) {
+                toolsMainLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Only handle dropdown on mobile
+                    if (window.innerWidth <= 768) {
+                        toolsDropdown?.classList.toggle('expanded');
+                    }
+                });
+            }
+            
+            // Close menu with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && isMenuOpen) {
+                    closeMenu();
+                }
+            });
+            
+            console.log('✅ Navigation initialized');
+        }
+        
+        // Initialize navigation when DOM is ready
+        function initApp() {
+            initNavigation();
+            console.log('✅ Blog navigation initialized successfully');
+        }
+        
+        // Start the app
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
+    </script>
+    
+    <!-- Service Worker for PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js');
+        }
+    </script>
+</body>
+</html>

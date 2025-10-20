@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Luis Virrueta - Psicólogo especializado en Psicología de la Creencia. Transformación real sin limitaciones.">
+    <title>Luis Virrueta - Psicología de la Creencia | Transformación Real sin Limitaciones</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* ESTILOS COMPLETOS INLINE */
+        
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Loading screen styles */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f0f0f0;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hide content while loading */
+        body.loading main,
+        body.loading header {
+            opacity: 0;
+        }
+        
+        body:not(.loading) main,
+        body:not(.loading) header {
+            opacity: 1;
+            transition: opacity 0.6s ease-out;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar {
+            width: 100%;
+        }
+        
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+        
+        /* Brand */
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .logo-icon {
+            font-size: 1.5rem;
+            color: #667eea;
+        }
+        
+        .brand-text {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+        
+        .brand-title {
+            font-weight: 400;
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        .brand-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        
+        /* Navigation */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+        
+        /* Tools Dropdown Desktop */
+        .nav-tools-dropdown {
+            position: relative;
+        }
+        
+        .tools-main-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .dropdown-icon {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-tools-dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+        
+        .tools-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            padding: 1rem;
+            min-width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            margin-top: 0.5rem;
+        }
+        
+        .nav-tools-dropdown:hover .tools-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+        
+        .dropdown-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .dropdown-item i {
+            width: 20px;
+            text-align: center;
+            color: #667eea;
+        }
+        
+        .item-content h5 {
+            margin-bottom: 0.25rem;
+            color: #333;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .item-content p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+        
+        /* Mobile Toggle */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            gap: 4px;
+            z-index: 1001;
+        }
+        
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        .nav-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .nav-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 9rem 2rem 5rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+        }
+        
+        .hero-brand-container {
+            margin-bottom: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .method-label {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .hero-brand-pill {
+            display: inline-block;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe);
+            background-size: 400% 400%;
+            animation: gradientShift 4s ease infinite;
+            color: white;
+            padding: 0.9rem 1.6rem;
+            border-radius: 35px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: fit-content;
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        .hero-brand-pill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.5);
+        }
+        
+        .hero-brand-pill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .hero-brand-pill:hover::before {
+            left: 100%;
+        }
+        
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .brand-highlight {
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .hero-title {
+            font-size: 2.6rem;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 1.5rem;
+            color: #2d3748;
+            text-align: center;
+            letter-spacing: -0.3px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Jerarquía del nuevo hero */
+        .hero-impact {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #1a202c;
+            line-height: 1.2;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero-elements {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #4a5568;
+            line-height: 1.3;
+            display: block;
+            font-style: italic;
+        }
+        
+        .hero-key-message {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 2rem auto 1.5rem;
+            max-width: 600px;
+            color: #2d3748;
+            line-height: 1.4;
+        }
+        
+        .hero-revelation {
+            font-size: 1.4rem;
+            font-weight: 500;
+            text-align: center;
+            margin: 0 auto 2.5rem;
+            max-width: 500px;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+        
+        .hero-revelation strong {
+            color: #667eea;
+            font-weight: 700;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes textGlow {
+            0% {
+                filter: brightness(1);
+            }
+            100% {
+                filter: brightness(1.2);
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: #718096;
+            margin-bottom: 3.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            font-weight: 400;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn--primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn--primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn--primary:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn--secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: #667eea;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn--secondary:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn--secondary:active {
+            transform: translateY(0px);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+            scroll-margin-top: 90px;
+        }
+        
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .lead {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        /* Quotes Carousel Styles */
+        .quotes-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quotes-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .quotes-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .quotes-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+        
+        .quotes-subtitle {
+            font-size: 1.1rem;
+            color: #4a5568;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .quote-slide {
+            min-width: 100%;
+            padding: 4rem 3rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            position: relative;
+        }
+        
+        .quote-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        .quote-author {
+            flex-shrink: 0;
+            text-align: center;
+        }
+        
+        .author-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 0.25rem;
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            color: #667eea;
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        .quote-content {
+            flex: 1;
+        }
+        
+        .quote-text {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            position: relative;
+        }
+        
+        .quote-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: #667eea;
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+            opacity: 0.3;
+            font-family: serif;
+        }
+        
+        .quote-secondary {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #4a5568;
+            font-style: italic;
+            padding-left: 1rem;
+            border-left: 3px solid #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .quote-explanation {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #2d3748;
+            background: rgba(102, 126, 234, 0.05);
+            padding: 1.25rem;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .quote-explanation strong {
+            color: #667eea;
+            font-weight: 700;
+        }
+        
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #667eea;
+            color: #667eea;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .carousel-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #cbd5e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .indicator.active {
+            background: #667eea;
+            transform: scale(1.2);
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 2rem 1rem;
+                transform: translateX(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                z-index: 999;
+                gap: 1.5rem;
+                overflow-y: auto;
+                box-sizing: border-box;
+            }
+            
+            .nav-menu.active {
+                transform: translateX(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-menu li {
+                width: 100%;
+                max-width: 320px;
+                margin: 0;
+                list-style: none;
+            }
+            
+            .nav-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                padding: 1.2rem 1.5rem;
+                font-size: 1.1rem;
+                font-weight: 500;
+                text-align: center;
+                border-radius: 12px;
+                background: rgba(103, 126, 234, 0.08);
+                margin: 0 0 0.75rem 0;
+                text-decoration: none;
+                color: #333;
+                transition: all 0.3s ease;
+                box-sizing: border-box;
+                min-height: 56px;
+            }
+            
+            .nav-link:hover,
+            .nav-link:focus {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            }
+            
+            /* Reset desktop styles for mobile */
+            .nav-tools-dropdown {
+                width: 100%;
+                max-width: 320px;
+                position: static;
+            }
+            
+            .nav-tools-dropdown:hover .dropdown-icon {
+                transform: none;
+            }
+            
+            .nav-tools-dropdown:hover .tools-dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+            
+            .tools-main-link {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                padding: 1.2rem 1.5rem;
+                font-size: 1.1rem;
+                font-weight: 500;
+                text-align: left;
+                border-radius: 12px;
+                background: rgba(103, 126, 234, 0.08);
+                margin: 0 0 0.75rem 0;
+                text-decoration: none;
+                color: #333;
+                transition: all 0.3s ease;
+                box-sizing: border-box;
+                min-height: 56px;
+            }
+            
+            .tools-text-container {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            
+            .tools-text-container i {
+                font-size: 1.1rem;
+                color: #667eea;
+            }
+            
+            .dropdown-icon {
+                font-size: 0.9rem;
+                color: #667eea;
+                transition: transform 0.3s ease;
+            }
+            
+            .nav-tools-dropdown.expanded .dropdown-icon {
+                transform: rotate(180deg);
+            }
+            
+            .tools-dropdown-menu {
+                position: static !important;
+                transform: none !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                width: 100%;
+                background: rgba(103, 126, 234, 0.05);
+                border-radius: 12px;
+                padding: 0;
+                margin: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                box-sizing: border-box;
+                box-shadow: none;
+                z-index: auto;
+                min-width: auto;
+            }
+            
+            .nav-tools-dropdown.expanded .tools-dropdown-menu {
+                max-height: 250px;
+                padding: 1rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .dropdown-item {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                padding: 1rem;
+                border-radius: 8px;
+                text-decoration: none;
+                color: #333;
+                background: white;
+                margin-bottom: 0.75rem;
+                transition: all 0.3s ease;
+                box-sizing: border-box;
+            }
+            
+            .dropdown-item:last-child {
+                margin-bottom: 0;
+            }
+            
+            .dropdown-item:hover {
+                background: rgba(102, 126, 234, 0.1);
+                transform: translateX(5px);
+            }
+            
+            .dropdown-item i {
+                width: 20px;
+                text-align: center;
+                color: #667eea;
+                flex-shrink: 0;
+            }
+            
+            .item-content {
+                flex: 1;
+            }
+            
+            .item-content h5 {
+                margin: 0 0 0.25rem 0;
+                color: #333;
+                font-size: 1rem;
+                font-weight: 600;
+            }
+            
+            .item-content p {
+                margin: 0;
+                font-size: 0.9rem;
+                color: #666;
+                line-height: 1.3;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .hero {
+                padding: 7rem 1rem 4rem;
+                min-height: auto;
+            }
+            
+            .method-label {
+                font-size: 0.75rem;
+                padding: 0.35rem 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-brand-pill {
+                font-size: 0.85rem;
+                padding: 0.7rem 1.3rem;
+                border-radius: 30px;
+                white-space: nowrap;
+                line-height: 1.2;
+            }
+            
+            .hero-brand-container {
+                margin-bottom: 2.5rem;
+                gap: 1rem;
+            }
+            
+            .hero-title {
+                font-size: 1.9rem;
+                line-height: 1.3;
+                margin-bottom: 1.5rem;
+                letter-spacing: -0.2px;
+            }
+            
+            /* Responsive del nuevo hero */
+            .hero-impact {
+                font-size: 2.2rem;
+                line-height: 1.2;
+                margin-bottom: 0.5rem;
+            }
+            
+            .hero-elements {
+                font-size: 1.6rem;
+                line-height: 1.3;
+            }
+            
+            .hero-key-message {
+                font-size: 1.4rem;
+                margin: 1.5rem auto 1rem;
+                line-height: 1.4;
+            }
+            
+            .hero-revelation {
+                font-size: 1.1rem;
+                margin: 0 auto 2rem;
+                line-height: 1.5;
+            }
+            
+            .hero-title br {
+                display: none;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+                line-height: 1.6;
+                margin-bottom: 2.5rem;
+                padding: 0 0.5rem;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .hero-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            /* Prevent body scroll when menu is open */
+            body.menu-open {
+                overflow: hidden;
+                position: fixed;
+                width: 100%;
+            }
+            
+            /* Quotes Carousel Mobile */
+            .quotes-section {
+                padding: 3rem 0;
+            }
+            
+            .quotes-container {
+                padding: 0 1rem;
+            }
+            
+            .quotes-title {
+                font-size: 1.8rem;
+            }
+            
+            .quote-slide {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .author-image {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+            
+            .quote-text {
+                font-size: 1.1rem;
+                line-height: 1.5;
+            }
+            
+            .quote-secondary {
+                font-size: 1rem;
+                padding-left: 0.75rem;
+            }
+            
+            .quote-explanation {
+                font-size: 0.9rem;
+                padding: 1rem;
+            }
+            
+            .carousel-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .nav-menu {
+                padding: 1.5rem 0.75rem;
+                gap: 1.25rem;
+            }
+            
+            .nav-menu li {
+                max-width: 280px;
+            }
+            
+            .nav-link,
+            .tools-main-link {
+                padding: 1rem 1.25rem;
+                font-size: 1rem;
+                min-height: 52px;
+            }
+            
+            .method-label {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.8rem;
+            }
+            
+            .hero-brand-pill {
+                font-size: 0.8rem;
+                padding: 0.6rem 1.1rem;
+                line-height: 1.2;
+                white-space: nowrap;
+            }
+            
+            .hero-title {
+                font-size: 1.6rem;
+                line-height: 1.3;
+                letter-spacing: -0.1px;
+                padding: 0 0.5rem;
+            }
+            
+            /* Extra small responsive del nuevo hero */
+            .hero-impact {
+                font-size: 1.8rem;
+                line-height: 1.2;
+            }
+            
+            .hero-elements {
+                font-size: 1.3rem;
+                line-height: 1.3;
+            }
+            
+            .hero-key-message {
+                font-size: 1.2rem;
+                margin: 1.25rem auto 0.75rem;
+                padding: 0 1rem;
+            }
+            
+            .hero-revelation {
+                font-size: 1rem;
+                margin: 0 auto 1.5rem;
+                padding: 0 1rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+                line-height: 1.5;
+                padding: 0 0.25rem;
+            }
+            
+            /* Quotes Carousel Extra Small */
+            .quotes-title {
+                font-size: 1.5rem;
+            }
+            
+            .quote-slide {
+                padding: 2rem 1rem;
+            }
+            
+            .author-image {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            
+            .quote-text {
+                font-size: 1rem;
+                line-height: 1.4;
+            }
+            
+            .quote-secondary {
+                font-size: 0.9rem;
+            }
+            
+            .quote-explanation {
+                font-size: 0.85rem;
+                padding: 0.75rem;
+            }
+        }
+        
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+    </style>
+</head>
+
+<body class="loading">
+    <!-- Loading Indicator -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="spinner"></div>
+    </div>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand/Logo -->
+                <div class="nav-brand">
+                    <i class="fas fa-eye logo-icon"></i>
+                    <span class="brand-text">
+                        <span class="brand-title">Psic.</span> 
+                        <span class="brand-name">Luis Virrueta</span>
+                    </span>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <!-- Navigation Menu -->
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#metodo" class="nav-link">Mi Método</a></li>
+                    <li><a href="#transformacion" class="nav-link">Transformación</a></li>
+                    <li><a href="#quien-soy" class="nav-link">¿Quién Soy?</a></li>
+                    
+                    <!-- Tools Dropdown -->
+                    <li class="nav-tools-dropdown">
+                        <a href="#" class="nav-link tools-main-link">
+                            <span class="tools-text-container">
+                                <i class="fas fa-tools"></i>
+                                <span>Herramientas</span>
+                            </span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        
+                        <div class="tools-dropdown-menu">
+                            <a href="blog/" class="dropdown-item">
+                                <i class="fas fa-feather-alt"></i>
+                                <div class="item-content">
+                                    <h5>Blog</h5>
+                                    <p>Artículos y reflexiones</p>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-tools"></i>
+                                <div class="item-content">
+                                    <h5>Herramientas</h5>
+                                    <p>Recursos prácticos</p>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-microphone"></i>
+                                <div class="item-content">
+                                    <h5>Podcast</h5>
+                                    <p>Conversaciones profundas</p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- Mobile Overlay -->
+        <div class="nav-overlay" id="nav-overlay"></div>
+    </header>
+    
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <!-- Hero Section -->
+        <section id="inicio" class="hero section">
+            <div class="container">
+                <div class="hero-content">
+                    <!-- Brand Container -->
+                    <div class="hero-brand-container">
+                        <div class="method-label">Método Integral</div>
+                        <div class="hero-brand-pill">
+                            <span class="brand-highlight">Psicología</span> de la <span class="brand-highlight">Creencia®</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Main Title -->
+                    <h1 class="hero-title">
+                        <span class="hero-impact">Sin darte cuenta, tus creencias inconscientes<br>
+                        escriben tu presente:</span><br>
+                        <span class="hero-elements">tu cuerpo, tu dinero, tus vínculos, tu mente.</span>
+                    </h1>
+                    
+                    <!-- Key Message -->
+                    <div class="hero-key-message">
+                        <span class="highlight">Al hacerlas conscientes</span> dejan de operar en ti
+                    </div>
+                    
+                    <!-- Revelation -->
+                    <p class="hero-revelation">
+                        Por ello no has podido cambiar tu vida:<br>
+                        <strong>porque lo intentas solo con la consciencia</strong>
+                    </p>
+                    
+                    <!-- Call to Action -->
+                    <div class="hero-actions">
+                        <a href="#contacto" class="btn btn--primary btn--lg">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Agenda tu Sesión</span>
+                        </a>
+                        <a href="#metodo" class="btn btn--secondary btn--lg">
+                            <i class="fas fa-play"></i>
+                            <span>Conoce el Método</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Background Elements -->
+            <div class="hero-background">
+                <div class="hero-gradient"></div>
+                <div class="hero-particles"></div>
+            </div>
+        </section>
+        
+        <!-- Quotes Carousel Section -->
+        <section class="quotes-section">
+            <div class="quotes-container">
+                <div class="quotes-header">
+                    <h2 class="quotes-title">Ciencia que Respalda el Método</h2>
+                    <p class="quotes-subtitle">
+                        De la biología celular a la física cuántica: cómo grandes científicos y pensadores 
+                        confirman que cambiar creencias transforma tu realidad
+                    </p>
+                </div>
+                
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carousel-track">
+                        <!-- Bruce Lipton - #1 MÁS IMPORTANTE -->
+                        <div class="quote-slide">
+                            <div class="quote-author">
+                                <div class="author-image">
+                                    <i class="fas fa-dna"></i>
+                                </div>
+                                <div class="author-info">
+                                    <h4>Bruce Lipton</h4>
+                                    <p>Biólogo celular • "La biología de la creencia"</p>
+                                </div>
+                            </div>
+                            <div class="quote-content">
+                                <div class="quote-text">
+                                    "Tus creencias actúan como filtros: cambian cómo ves el mundo, 
+                                    y cuando cambias la visión, cambias la biología."
+                                </div>
+                                <div class="quote-secondary">
+                                    "Somos programas andantes: lo grabado en la infancia dirige el 95% de nuestras vidas, 
+                                    hasta que lo hacemos consciente y lo reescribimos."
+                                </div>
+                                <div class="quote-explanation">
+                                    <strong>Aplicación práctica:</strong> Sus investigaciones prueban que las creencias inconscientes 
+                                    afectan directamente tu salud física, sistema inmune y procesos de sanación. 
+                                    Al transformar creencias limitantes sobre tu cuerpo, activas tu capacidad natural de regeneración.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Carl Jung - #2 FUNDAMENTO PSICOLÓGICO -->
+                        <div class="quote-slide">
+                            <div class="quote-author">
+                                <div class="author-image">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <div class="author-info">
+                                    <h4>Carl Gustav Jung</h4>
+                                    <p>Psiquiatra suizo • Fundador psicología analítica</p>
+                                </div>
+                            </div>
+                            <div class="quote-content">
+                                <div class="quote-text">
+                                    "Hasta que no hagas consciente lo inconsciente, 
+                                    dirigirá tu vida y lo llamarás destino."
+                                </div>
+                                <div class="quote-explanation">
+                                    <strong>El corazón del método:</strong> Jung descubrió que el inconsciente contiene 
+                                    patrones que se repiten automáticamente. La Psicología de la Creencia trabaja precisamente 
+                                    haciendo visible estos patrones ocultos en relaciones, dinero, autoestima y propósito de vida, 
+                                    liberándote de ciclos que creías "destino".
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Joe Dispenza - #3 NEUROCIENCIA APLICADA -->
+                        <div class="quote-slide">
+                            <div class="quote-author">
+                                <div class="author-image">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="author-info">
+                                    <h4>Joe Dispenza</h4>
+                                    <p>Neurocientífico • "Deja de ser tú"</p>
+                                </div>
+                            </div>
+                            <div class="quote-content">
+                                <div class="quote-text">
+                                    "Tu personalidad crea tu realidad. Y tu personalidad 
+                                    está hecha de lo que piensas, sientes y crees."
+                                </div>
+                                <div class="quote-secondary">
+                                    "El cerebro y el cuerpo no distinguen entre lo que imaginas y lo que vives."
+                                </div>
+                                <div class="quote-explanation">
+                                    <strong>Transformación neurológica:</strong> Sus estudios demuestran que cambiar creencias 
+                                    literalmente recablea el cerebro. En nuestras sesiones, usamos técnicas que activan 
+                                    nuevos circuitos neuronales, creando cambios medibles en tu forma de procesar 
+                                    oportunidades, relaciones y desafíos.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Frederick Dodson - #4 ESPEJO CUÁNTICO -->
+                        <div class="quote-slide">
+                            <div class="quote-author">
+                                <div class="author-image">
+                                    <i class="fas fa-infinity"></i>
+                                </div>
+                                <div class="author-info">
+                                    <h4>Frederick Dodson</h4>
+                                    <p>Coach de conciencia • "Levels of Energy"</p>
+                                </div>
+                            </div>
+                            <div class="quote-content">
+                                <div class="quote-text">
+                                    "El mundo exterior es un espejo del interior: cuando elevas tu estado de conciencia, 
+                                    la vida responde en la misma frecuencia."
+                                </div>
+                                <div class="quote-explanation">
+                                    <strong>Ley del espejo:</strong> Dodson explica cómo tus creencias internas se reflejan 
+                                    automáticamente en tu realidad externa. Si cambias creencias sobre abundancia, amor o éxito, 
+                                    tu mundo material responde sincronizadamente. Es por esto que los cambios internos 
+                                    generan resultados tangibles tan rápidamente.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Albert Einstein - #5 FÍSICA Y CONCIENCIA -->
+                        <div class="quote-slide">
+                            <div class="quote-author">
+                                <div class="author-image">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="author-info">
+                                    <h4>Albert Einstein</h4>
+                                    <p>Físico teórico • Premio Nobel</p>
+                                </div>
+                            </div>
+                            <div class="quote-content">
+                                <div class="quote-text">
+                                    "La mente intuitiva es un don sagrado y la mente racional su fiel sirviente. 
+                                    Hemos creado una sociedad que honra al sirviente y ha olvidado el don."
+                                </div>
+                                <div class="quote-secondary">
+                                    "La realidad es solo una ilusión, aunque muy persistente."
+                                </div>
+                                <div class="quote-explanation">
+                                    <strong>Más allá de la lógica:</strong> Einstein entendió que la intuición supera 
+                                    al análisis racional. La dimensión supraconsciente que trabajamos accede a esta 
+                                    sabiduría intuitiva, permitiéndote tomar decisiones desde un lugar de claridad 
+                                    que trasciende las limitaciones del pensamiento ordinario.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Rumi - #6 SABIDURÍA PERENNE -->
+                        <div class="quote-slide">
+                            <div class="quote-author">
+                                <div class="author-image">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="author-info">
+                                    <h4>Rumi</h4>
+                                    <p>Poeta místico sufí • Siglo XIII</p>
+                                </div>
+                            </div>
+                            <div class="quote-content">
+                                <div class="quote-text">
+                                    "Ayer era inteligente y quería cambiar el mundo. 
+                                    Hoy soy sabio y me cambio a mí mismo."
+                                </div>
+                                <div class="quote-secondary">
+                                    "El universo no está fuera de ti. Mira dentro de ti; todo lo que quieres, ya lo eres."
+                                </div>
+                                <div class="quote-explanation">
+                                    <strong>Sabiduría atemporal:</strong> Hace 800 años, Rumi ya sabía que el cambio 
+                                    real viene de adentro. Su poesía mística revela la misma verdad que la ciencia moderna: 
+                                    que tienes acceso interno a todo lo que buscas externamente. Es la esencia de trabajar 
+                                    con las tres dimensiones de la conciencia.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="carousel-indicators" id="indicators"></div>
+            </div>
+        </section>
+        
+        <!-- Method Section -->
+        <section id="metodo" class="section">
+            <div class="container">
+                <div class="content-wrapper text-center">
+                    <h2>Mi Método</h2>
+                    <p class="lead">
+                        El primer paso hacia la transformación es hacer visible lo invisible
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- JavaScript - All inline, no external dependencies -->
+    <script>
+        console.log('🚀 Luis Virrueta Website Loading...');
+        
+        // Remove loading screen
+        function removeLoadingScreen() {
+            const loadingScreen = document.getElementById('loading-screen');
+            const body = document.body;
+            
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+                body.classList.remove('loading');
+                console.log('✅ Loading screen removed');
+            }
+        }
+        
+        // Navigation functionality
+        function initNavigation() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            const navOverlay = document.getElementById('nav-overlay');
+            const toolsDropdown = document.querySelector('.nav-tools-dropdown');
+            
+            if (!navToggle || !navMenu) return;
+            
+            let isMenuOpen = false;
+            
+            // Toggle menu
+            function toggleMenu() {
+                isMenuOpen = !isMenuOpen;
+                navMenu.classList.toggle('active', isMenuOpen);
+                navToggle.classList.toggle('active', isMenuOpen);
+                if (navOverlay) {
+                    navOverlay.classList.toggle('active', isMenuOpen);
+                }
+                
+                if (isMenuOpen) {
+                    document.body.classList.add('menu-open');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.classList.remove('menu-open');
+                    document.body.style.overflow = '';
+                }
+            }
+            
+            // Close menu
+            function closeMenu() {
+                isMenuOpen = false;
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                document.body.style.overflow = '';
+                
+                if (navOverlay) {
+                    navOverlay.classList.remove('active');
+                }
+                if (toolsDropdown) {
+                    toolsDropdown.classList.remove('expanded');
+                }
+            }
+            
+            // Events
+            navToggle.addEventListener('click', toggleMenu);
+            
+            if (navOverlay) {
+                navOverlay.addEventListener('click', closeMenu);
+            }
+            
+            // Close menu when clicking nav links
+            const navLinks = navMenu.querySelectorAll('.nav-link:not(.tools-main-link)');
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+            
+            // Tools dropdown
+            const toolsMainLink = document.querySelector('.tools-main-link');
+            if (toolsMainLink) {
+                toolsMainLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    if (window.innerWidth <= 768) {
+                        toolsDropdown?.classList.toggle('expanded');
+                    }
+                });
+            }
+            
+            // Close menu with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && isMenuOpen) {
+                    closeMenu();
+                }
+            });
+            
+            console.log('✅ Navigation initialized');
+        }
+        
+        // Quotes Carousel functionality
+        function initCarousel() {
+            const track = document.getElementById('carousel-track');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const indicatorsContainer = document.getElementById('indicators');
+            
+            if (!track || !prevBtn || !nextBtn || !indicatorsContainer) return;
+            
+            const slides = track.children;
+            const totalSlides = slides.length;
+            let currentSlide = 0;
+            let isTransitioning = false;
+            
+            // Create indicators
+            for (let i = 0; i < totalSlides; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator';
+                if (i === 0) indicator.classList.add('active');
+                indicator.addEventListener('click', () => goToSlide(i));
+                indicatorsContainer.appendChild(indicator);
+            }
+            
+            const indicators = indicatorsContainer.children;
+            
+            // Update carousel position
+            function updateCarousel() {
+                const translateX = -currentSlide * 100;
+                track.style.transform = `translateX(${translateX}%)`;
+                
+                // Update indicators
+                Array.from(indicators).forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentSlide);
+                });
+            }
+            
+            // Go to specific slide
+            function goToSlide(slideIndex) {
+                if (isTransitioning || slideIndex === currentSlide) return;
+                
+                isTransitioning = true;
+                currentSlide = slideIndex;
+                updateCarousel();
+                
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 600);
+            }
+            
+            // Next slide
+            function nextSlide() {
+                const nextIndex = (currentSlide + 1) % totalSlides;
+                goToSlide(nextIndex);
+            }
+            
+            // Previous slide
+            function prevSlide() {
+                const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+                goToSlide(prevIndex);
+            }
+            
+            // Event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            // Auto-play carousel
+            let autoPlayInterval;
+            
+            function startAutoPlay() {
+                autoPlayInterval = setInterval(nextSlide, 6000);
+            }
+            
+            function stopAutoPlay() {
+                clearInterval(autoPlayInterval);
+            }
+            
+            // Touch/swipe support
+            let startX = 0;
+            let currentX = 0;
+            let isDragging = false;
+            
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+                stopAutoPlay();
+            });
+            
+            track.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                currentX = e.touches[0].clientX;
+            });
+            
+            track.addEventListener('touchend', () => {
+                if (!isDragging) return;
+                isDragging = false;
+                
+                const deltaX = startX - currentX;
+                const threshold = 50;
+                
+                if (deltaX > threshold) {
+                    nextSlide();
+                } else if (deltaX < -threshold) {
+                    prevSlide();
+                }
+                
+                setTimeout(startAutoPlay, 3000);
+            });
+            
+            // Pause on hover
+            track.addEventListener('mouseenter', stopAutoPlay);
+            track.addEventListener('mouseleave', () => {
+                setTimeout(startAutoPlay, 1000);
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                }
+            });
+            
+            // Start auto-play
+            setTimeout(startAutoPlay, 3000);
+            
+            console.log('✅ Quotes carousel initialized');
+        }
+        
+        // Initialize everything when DOM is ready
+        function initApp() {
+            initNavigation();
+            initCarousel();
+            
+            // Remove loading screen after a short delay
+            setTimeout(removeLoadingScreen, 800);
+            
+            console.log('✅ App initialized successfully');
+        }
+        
+        // Start the app
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
+        
+        // Backup removal of loading screen
+        window.addEventListener('load', () => {
+            setTimeout(removeLoadingScreen, 1000);
+        });
+    </script>
+</body>
+</html>

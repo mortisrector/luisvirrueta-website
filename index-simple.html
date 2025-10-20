@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Luis Virrueta - Psicólogo especializado en Psicología de la Creencia. Transformación real sin limitaciones.">
+    <title>Luis Virrueta - Psicología de la Creencia | Transformación Real sin Limitaciones</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Estilos CSS Modulares -->
+    <link rel="stylesheet" href="src/styles/main.css">
+    
+    <style>
+        /* Loading screen styles inline to ensure they work */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f0f0f0;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hide content while loading */
+        body.loading main,
+        body.loading header {
+            opacity: 0;
+        }
+        
+        body:not(.loading) main,
+        body:not(.loading) header {
+            opacity: 1;
+            transition: opacity 0.6s ease-out;
+        }
+    </style>
+</head>
+
+<body class="loading">
+    <!-- Loading Indicator -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="spinner"></div>
+    </div>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand/Logo -->
+                <div class="nav-brand">
+                    <i class="fas fa-eye logo-icon"></i>
+                    <span class="brand-text">
+                        <span class="brand-title">Psic.</span> 
+                        <span class="brand-name">Luis Virrueta</span>
+                    </span>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <!-- Navigation Menu -->
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#metodo" class="nav-link">Mi Método</a></li>
+                    <li><a href="#transformacion" class="nav-link">Transformación</a></li>
+                    <li><a href="#quien-soy" class="nav-link">¿Quién Soy?</a></li>
+                    
+                    <!-- Tools Dropdown -->
+                    <li class="nav-tools-dropdown">
+                        <a href="#" class="nav-link tools-main-link">
+                            <span class="tools-text-container">
+                                <i class="fas fa-tools"></i>
+                                <span>Herramientas</span>
+                            </span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        
+                        <div class="tools-dropdown-menu">
+                            <a href="blog/" class="dropdown-item">
+                                <i class="fas fa-feather-alt"></i>
+                                <div class="item-content">
+                                    <h5>Blog</h5>
+                                    <p>Artículos y reflexiones</p>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-tools"></i>
+                                <div class="item-content">
+                                    <h5>Herramientas</h5>
+                                    <p>Recursos prácticos</p>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-microphone"></i>
+                                <div class="item-content">
+                                    <h5>Podcast</h5>
+                                    <p>Conversaciones profundas</p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- Mobile Overlay -->
+        <div class="nav-overlay" id="nav-overlay"></div>
+    </header>
+    
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <!-- Hero Section -->
+        <section id="inicio" class="hero section">
+            <div class="container">
+                <div class="hero-content">
+                    <!-- Brand Container -->
+                    <div class="hero-brand-container">
+                        <div class="method-label">Método Integral</div>
+                        <div class="hero-brand-pill">
+                            <span class="brand-text">Psicología de la</span>
+                            <span class="brand-highlight">Creencia®</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Main Title -->
+                    <h1 class="hero-title">
+                        Hasta que tus <span class="highlight">creencias ocultas</span> se hagan visibles, 
+                        gobernarán tu vida. Al transformarlas, 
+                        <span class="highlight">te transformas tú</span>.
+                    </h1>
+                    
+                    <!-- Subtitle -->
+                    <p class="hero-subtitle">
+                        Descubre el poder de cambiar las creencias que limitan tu potencial. 
+                        Método científico respaldado por años de investigación en neuroplasticidad 
+                        y psicología cognitiva.
+                    </p>
+                    
+                    <!-- Call to Action -->
+                    <div class="hero-actions">
+                        <a href="#contacto" class="btn btn--primary btn--lg">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Agenda tu Sesión</span>
+                        </a>
+                        <a href="#metodo" class="btn btn--secondary btn--lg">
+                            <i class="fas fa-play"></i>
+                            <span>Conoce el Método</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Background Elements -->
+            <div class="hero-background">
+                <div class="hero-gradient"></div>
+                <div class="hero-particles"></div>
+            </div>
+        </section>
+        
+        <!-- Method Section -->
+        <section id="metodo" class="section">
+            <div class="container">
+                <div class="content-wrapper text-center">
+                    <h2>Mi Método</h2>
+                    <p class="lead">
+                        El primer paso hacia la transformación es hacer visible lo invisible
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- JavaScript - All inline, no external dependencies -->
+    <script>
+        console.log('🚀 Luis Virrueta Website Loading...');
+        
+        // Remove loading screen
+        function removeLoadingScreen() {
+            const loadingScreen = document.getElementById('loading-screen');
+            const body = document.body;
+            
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+                body.classList.remove('loading');
+                console.log('✅ Loading screen removed');
+            }
+        }
+        
+        // Navigation functionality
+        function initNavigation() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            const navOverlay = document.getElementById('nav-overlay');
+            const toolsDropdown = document.querySelector('.nav-tools-dropdown');
+            
+            if (!navToggle || !navMenu) return;
+            
+            let isMenuOpen = false;
+            
+            // Toggle menu
+            function toggleMenu() {
+                isMenuOpen = !isMenuOpen;
+                navMenu.classList.toggle('active', isMenuOpen);
+                navToggle.classList.toggle('active', isMenuOpen);
+                if (navOverlay) {
+                    navOverlay.classList.toggle('active', isMenuOpen);
+                }
+                document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+            }
+            
+            // Close menu
+            function closeMenu() {
+                isMenuOpen = false;
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                if (navOverlay) {
+                    navOverlay.classList.remove('active');
+                }
+                if (toolsDropdown) {
+                    toolsDropdown.classList.remove('expanded');
+                }
+                document.body.style.overflow = '';
+            }
+            
+            // Events
+            navToggle.addEventListener('click', toggleMenu);
+            
+            if (navOverlay) {
+                navOverlay.addEventListener('click', closeMenu);
+            }
+            
+            // Close menu when clicking nav links
+            const navLinks = navMenu.querySelectorAll('.nav-link:not(.tools-main-link)');
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+            
+            // Tools dropdown
+            const toolsMainLink = document.querySelector('.tools-main-link');
+            if (toolsMainLink) {
+                toolsMainLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    if (window.innerWidth <= 768) {
+                        toolsDropdown?.classList.toggle('expanded');
+                    }
+                });
+            }
+            
+            // Close menu with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && isMenuOpen) {
+                    closeMenu();
+                }
+            });
+            
+            console.log('✅ Navigation initialized');
+        }
+        
+        // Initialize everything when DOM is ready
+        function initApp() {
+            initNavigation();
+            
+            // Remove loading screen after a short delay
+            setTimeout(removeLoadingScreen, 800);
+            
+            console.log('✅ App initialized successfully');
+        }
+        
+        // Start the app
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
+        
+        // Backup removal of loading screen
+        window.addEventListener('load', () => {
+            setTimeout(removeLoadingScreen, 1000);
+        });
+    </script>
+</body>
+</html>

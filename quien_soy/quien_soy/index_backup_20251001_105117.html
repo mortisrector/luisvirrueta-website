@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Luis Virrueta - Psicólogo especializado en Psicología de la Creencia. Transformación real sin limitaciones.">
+    <title>Luis Virrueta - Psicología de la Creencia | Transformación Real sin Limitaciones</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Estilos CSS Modulares -->
+    <link rel="stylesheet" href="src/styles/main.css">
+    
+    <style>
+        /* Loading screen styles inline to ensure they work */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f0f0f0;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hide content while loading */
+        body.loading main,
+        body.loading header {
+            opacity: 0;
+        }
+        
+        body:not(.loading) main,
+        body:not(.loading) header {
+            opacity: 1;
+            transition: opacity 0.6s ease-out;
+        }
+        
+        /* BASIC HEADER AND NAVIGATION STYLES */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .navbar {
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        /* NAVIGATION BRAND */
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .logo-icon {
+            font-size: 1.5rem;
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .brand-text {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            line-height: 1;
+        }
+        
+        .brand-title {
+            font-weight: 400;
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        .brand-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        
+        /* NAVIGATION MENU */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+        
+        /* MOBILE TOGGLE */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            gap: 4px;
+        }
+        
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+        }
+        
+        .hero-brand-container {
+            margin-bottom: 3rem;
+        }
+        
+        .method-label {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-brand-pill {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .brand-highlight {
+            font-weight: 700;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+        
+        .highlight {
+            color: #667eea;
+            font-weight: 700;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn--primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn--primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn--secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        
+        .btn--secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        /* SECTION STYLES */
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .lead {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        /* MOBILE OPTIMIZATIONS */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex !important;
+                z-index: 1001 !important;
+                background: rgba(255, 255, 255, 0.9) !important;
+                padding: 12px !important;
+                border-radius: 8px !important;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+            }
+            
+            .nav-menu {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100vh !important;
+                background: rgba(255, 255, 255, 0.98) !important;
+                backdrop-filter: blur(10px) !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                padding: 2rem !important;
+                transform: translateX(-100%) !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+                z-index: 999 !important;
+                gap: 2rem !important;
+            }
+            
+            .nav-menu.active {
+                transform: translateX(0) !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            .nav-menu li {
+                margin: 0 !important;
+                width: 100% !important;
+                max-width: 280px !important;
+            }
+            
+            .nav-link {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: 100% !important;
+                padding: 1rem 2rem !important;
+                font-size: 1.2rem !important;
+                font-weight: 500 !important;
+                color: #333 !important;
+                text-align: center !important;
+                border-radius: 12px !important;
+                border: 2px solid transparent !important;
+                transition: all 0.3s ease !important;
+                background: rgba(103, 126, 234, 0.05) !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .nav-link:hover,
+            .nav-link:focus {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+                color: white !important;
+                transform: translateY(-2px) !important;
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3) !important;
+            }
+            
+            .header {
+                padding: 0.5rem 0 !important;
+            }
+            
+            .container {
+                padding: 0 1rem !important;
+            }
+            
+            .nav-brand {
+                gap: 0.5rem !important;
+            }
+            
+            .logo-icon {
+                font-size: 1.3rem !important;
+            }
+            
+            .brand-title,
+            .brand-name {
+                font-size: 1rem !important;
+            }
+            
+            .hero {
+                padding: 6rem 1rem 4rem !important;
+                min-height: auto !important;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem !important;
+                line-height: 1.3 !important;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem !important;
+            }
+            
+            .hero-actions {
+                flex-direction: column !important;
+                gap: 1rem !important;
+                width: 100% !important;
+                max-width: 300px !important;
+                margin: 0 auto !important;
+            }
+            
+            .hero-actions .btn {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+        }
+        
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.6rem !important;
+            }
+            
+            .nav-brand {
+                gap: 0.4rem !important;
+            }
+            
+            .logo-icon {
+                font-size: 1.2rem !important;
+            }
+            
+            .brand-title,
+            .brand-name {
+                font-size: 0.95rem !important;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Focus improvements */
+        .nav-toggle:focus,
+        .nav-link:focus,
+        .btn:focus {
+            outline: 2px solid #667eea !important;
+            outline-offset: 2px !important;
+        }
+        
+        /* Prevent horizontal scroll */
+        body {
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="loading">
+    <!-- Loading Indicator -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="spinner"></div>
+    </div>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand/Logo -->
+                <div class="nav-brand">
+                    <i class="fas fa-eye logo-icon"></i>
+                    <span class="brand-text">
+                        <span class="brand-title">Psic.</span> 
+                        <span class="brand-name">Luis Virrueta</span>
+                    </span>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <!-- Navigation Menu -->
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#metodo" class="nav-link">Mi Método</a></li>
+                    <li><a href="#transformacion" class="nav-link">Transformación</a></li>
+                    <li><a href="#quien-soy" class="nav-link">¿Quién Soy?</a></li>
+                    
+                    <!-- Tools Dropdown -->
+                    <li class="nav-tools-dropdown">
+                        <a href="#" class="nav-link tools-main-link">
+                            <span class="tools-text-container">
+                                <i class="fas fa-tools"></i>
+                                <span>Herramientas</span>
+                            </span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        
+                        <div class="tools-dropdown-menu">
+                            <a href="blog/" class="dropdown-item">
+                                <i class="fas fa-feather-alt"></i>
+                                <div class="item-content">
+                                    <h5>Blog</h5>
+                                    <p>Artículos y reflexiones</p>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-tools"></i>
+                                <div class="item-content">
+                                    <h5>Herramientas</h5>
+                                    <p>Recursos prácticos</p>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-microphone"></i>
+                                <div class="item-content">
+                                    <h5>Podcast</h5>
+                                    <p>Conversaciones profundas</p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- Mobile Overlay -->
+        <div class="nav-overlay" id="nav-overlay"></div>
+    </header>
+    
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <!-- Hero Section -->
+        <section id="inicio" class="hero section">
+            <div class="container">
+                <div class="hero-content">
+                    <!-- Brand Container -->
+                    <div class="hero-brand-container">
+                        <div class="method-label">Método Integral</div>
+                        <div class="hero-brand-pill">
+                            <span class="brand-text">Psicología de la</span>
+                            <span class="brand-highlight">Creencia®</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Main Title -->
+                    <h1 class="hero-title">
+                        Hasta que tus <span class="highlight">creencias ocultas</span> se hagan visibles, 
+                        gobernarán tu vida. Al transformarlas, 
+                        <span class="highlight">te transformas tú</span>.
+                    </h1>
+                    
+                    <!-- Subtitle -->
+                    <p class="hero-subtitle">
+                        Descubre el poder de cambiar las creencias que limitan tu potencial. 
+                        Método científico respaldado por años de investigación en neuroplasticidad 
+                        y psicología cognitiva.
+                    </p>
+                    
+                    <!-- Call to Action -->
+                    <div class="hero-actions">
+                        <a href="#contacto" class="btn btn--primary btn--lg">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Agenda tu Sesión</span>
+                        </a>
+                        <a href="#metodo" class="btn btn--secondary btn--lg">
+                            <i class="fas fa-play"></i>
+                            <span>Conoce el Método</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Background Elements -->
+            <div class="hero-background">
+                <div class="hero-gradient"></div>
+                <div class="hero-particles"></div>
+            </div>
+        </section>
+        
+        <!-- Method Section -->
+        <section id="metodo" class="section">
+            <div class="container">
+                <div class="content-wrapper text-center">
+                    <h2>Mi Método</h2>
+                    <p class="lead">
+                        El primer paso hacia la transformación es hacer visible lo invisible
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- JavaScript - All inline, no external dependencies -->
+    <script>
+        console.log('🚀 Luis Virrueta Website Loading...');
+        
+        // Remove loading screen
+        function removeLoadingScreen() {
+            const loadingScreen = document.getElementById('loading-screen');
+            const body = document.body;
+            
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+                body.classList.remove('loading');
+                console.log('✅ Loading screen removed');
+            }
+        }
+        
+        // Navigation functionality
+        function initNavigation() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            const navOverlay = document.getElementById('nav-overlay');
+            const toolsDropdown = document.querySelector('.nav-tools-dropdown');
+            
+            if (!navToggle || !navMenu) return;
+            
+            let isMenuOpen = false;
+            
+            // Toggle menu
+            function toggleMenu() {
+                isMenuOpen = !isMenuOpen;
+                navMenu.classList.toggle('active', isMenuOpen);
+                navToggle.classList.toggle('active', isMenuOpen);
+                if (navOverlay) {
+                    navOverlay.classList.toggle('active', isMenuOpen);
+                }
+                document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+            }
+            
+            // Close menu
+            function closeMenu() {
+                isMenuOpen = false;
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                if (navOverlay) {
+                    navOverlay.classList.remove('active');
+                }
+                if (toolsDropdown) {
+                    toolsDropdown.classList.remove('expanded');
+                }
+                document.body.style.overflow = '';
+            }
+            
+            // Events
+            navToggle.addEventListener('click', toggleMenu);
+            
+            if (navOverlay) {
+                navOverlay.addEventListener('click', closeMenu);
+            }
+            
+            // Close menu when clicking nav links
+            const navLinks = navMenu.querySelectorAll('.nav-link:not(.tools-main-link)');
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+            
+            // Tools dropdown
+            const toolsMainLink = document.querySelector('.tools-main-link');
+            if (toolsMainLink) {
+                toolsMainLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    if (window.innerWidth <= 768) {
+                        toolsDropdown?.classList.toggle('expanded');
+                    }
+                });
+            }
+            
+            // Close menu with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && isMenuOpen) {
+                    closeMenu();
+                }
+            });
+            
+            console.log('✅ Navigation initialized');
+        }
+        
+        // Initialize everything when DOM is ready
+        function initApp() {
+            initNavigation();
+            
+            // Remove loading screen after a short delay
+            setTimeout(removeLoadingScreen, 800);
+            
+            console.log('✅ App initialized successfully');
+        }
+        
+        // Start the app
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
+        
+        // Backup removal of loading screen
+        window.addEventListener('load', () => {
+            setTimeout(removeLoadingScreen, 1000);
+        });
+    </script>
+</body>
+</html>
