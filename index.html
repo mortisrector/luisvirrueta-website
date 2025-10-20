@@ -1384,6 +1384,125 @@
             .hero-actions { max-width: 320px; }
         }
         
+        /* Video Modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .video-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .video-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: slideUp 0.4s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .video-modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            font-size: 1.5rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .video-modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: rotate(90deg);
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+        
+        /* Mobile responsive for video modal */
+        @media (max-width: 768px) {
+            .video-modal-content {
+                width: 95%;
+            }
+            
+            .video-modal-close {
+                top: -45px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-modal-content {
+                width: 98%;
+            }
+            
+            .video-modal-close {
+                top: -40px;
+                right: 5px;
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+            
+            .video-wrapper {
+                border-radius: 8px;
+            }
+        }
+        
         /* Scroll behavior */
         html {
             scroll-behavior: smooth;
@@ -1517,10 +1636,10 @@
                             <i class="fas fa-calendar-alt"></i>
                             <span>Agendar Sesión</span>
                         </a>
-                        <a href="#metodo" class="btn btn--secondary btn--lg">
+                        <button id="openVideoBtn" class="btn btn--secondary btn--lg">
                             <i class="fas fa-play"></i>
                             <span>Conoce mi Método</span>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1531,6 +1650,23 @@
                 <div class="hero-particles"></div>
             </div>
         </section>
+        
+        <!-- Video Modal -->
+        <div id="videoModal" class="video-modal">
+            <div class="video-modal-content">
+                <button class="video-modal-close" id="closeVideoBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="video-wrapper">
+                    <iframe id="youtubeVideo" 
+                            src="" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
         
         <!-- Quotes Carousel Section -->
         <section class="quotes-section">
@@ -4298,6 +4434,54 @@
             }
         }
         
+        // Video Modal functionality
+        function initVideoModal() {
+            const openBtn = document.getElementById('openVideoBtn');
+            const closeBtn = document.getElementById('closeVideoBtn');
+            const modal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('youtubeVideo');
+            const videoUrl = 'https://www.youtube.com/embed/tLW_dnBHMkI?autoplay=1&rel=0';
+            
+            if (!openBtn || !modal || !videoFrame) return;
+            
+            // Open modal
+            openBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.classList.add('active');
+                videoFrame.src = videoUrl;
+                document.body.style.overflow = 'hidden';
+                console.log('🎥 Video modal opened');
+            });
+            
+            // Close modal
+            function closeModal() {
+                modal.classList.remove('active');
+                videoFrame.src = '';
+                document.body.style.overflow = '';
+                console.log('❌ Video modal closed');
+            }
+            
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeModal);
+            }
+            
+            // Close on background click
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Close on ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+            
+            console.log('✅ Video modal initialized');
+        }
+        
         // Navigation functionality
         function initNavigation() {
             const navToggle = document.getElementById('nav-toggle');
@@ -4631,6 +4815,7 @@
             initCarousel();
             initProjectsCarousel();
             initTestimonialsCarousel();
+            initVideoModal();
             
             // Remove loading screen after a short delay
             setTimeout(removeLoadingScreen, 800);
