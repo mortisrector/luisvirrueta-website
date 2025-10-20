@@ -15,6 +15,10 @@
     <!-- Preconnect to YouTube for faster video loading -->
     <link rel="preconnect" href="https://www.youtube-nocookie.com">
     <link rel="dns-prefetch" href="https://www.youtube-nocookie.com">
+    <link rel="preconnect" href="https://www.youtube.com">
+    <link rel="dns-prefetch" href="https://www.youtube.com">
+    <link rel="preconnect" href="https://i.ytimg.com">
+    <link rel="dns-prefetch" href="https://i.ytimg.com">
     
     <style>
         /* ESTILOS COMPLETOS INLINE */
@@ -659,23 +663,25 @@
             font-size: 1.3rem;
         }
         
-        .btn-video-content {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.15rem;
-        }
-        
         .btn-video-main {
             font-size: 1rem;
             font-weight: 600;
             line-height: 1.2;
         }
         
-        .btn-video-sub {
-            font-size: 0.75rem;
-            font-weight: 400;
-            opacity: 0.8;
+        /* Video CTA block: button + caption below */
+        .video-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .btn-video-caption {
+            font-size: 0.8rem;
+            color: #4a5568; /* gray-700 */
+            opacity: 0.9;
+            line-height: 1;
             text-transform: lowercase;
         }
         
@@ -1468,7 +1474,8 @@
             max-width: 500px;
             max-height: 90vh;
             margin: 0 auto;
-            animation: slideUp 0.4s ease;
+            /* Avoid transforms to prevent iframe rendering issues on some mobile browsers */
+            will-change: opacity;
         }
         
         @keyframes slideUp {
@@ -1697,13 +1704,13 @@
                             <i class="fas fa-calendar-alt"></i>
                             <span>Agendar Sesión</span>
                         </a>
-                        <button id="openVideoBtn" class="btn btn--secondary btn--lg btn-video">
-                            <i class="fas fa-play-circle"></i>
-                            <span class="btn-video-content">
+                        <div class="video-cta">
+                            <button id="openVideoBtn" class="btn btn--secondary btn--lg btn-video">
+                                <i class="fas fa-play-circle"></i>
                                 <span class="btn-video-main">Conoce mi Método</span>
-                                <span class="btn-video-sub">ver video</span>
-                            </span>
-                        </button>
+                            </button>
+                            <div class="btn-video-caption">ver video</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1722,11 +1729,13 @@
                     <i class="fas fa-times"></i>
                 </button>
                 <div class="video-wrapper">
-                    <iframe id="youtubeVideo" 
-                            src="" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
+            <iframe id="youtubeVideo" 
+                src="" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen
+                playsinline
+                referrerpolicy="strict-origin-when-cross-origin">
                     </iframe>
                 </div>
             </div>
@@ -4504,8 +4513,8 @@
             const closeBtn = document.getElementById('closeVideoBtn');
             const modal = document.getElementById('videoModal');
             const videoFrame = document.getElementById('youtubeVideo');
-            // Optimized parameters: autoplay, no related videos, modest branding, faster loading
-            const videoUrl = 'https://www.youtube-nocookie.com/embed/tLW_dnBHMkI?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1';
+            // Optimized parameters: autoplay, no related videos, modest branding, inline playback
+            const videoUrl = 'https://www.youtube.com/embed/tLW_dnBHMkI?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&iv_load_policy=3&fs=1&color=white';
             
             if (!openBtn || !modal || !videoFrame) return;
             
