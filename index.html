@@ -380,28 +380,74 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
+        /* Micro Insight - apertura sutil */
+        .micro-insight {
+            font-size: 0.98rem;
+            font-style: italic;
+            color: #6b7280;
+            text-align: center;
+            margin: 0 auto 1.5rem;
+            max-width: 36ch;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+        
         .hero-title {
             font-size: 2.5rem;
             font-weight: 700;
             line-height: 1.18;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.8rem;
             color: #2d3748;
             text-align: center;
             letter-spacing: -0.3px;
-            max-width: 24ch; /* more controlled line length for nicer breaks */
+            max-width: 26ch;
             margin-left: auto;
             margin-right: auto;
-            text-wrap: balance; /* modern browsers */
+            text-wrap: balance;
         }
         
-        /* Jerarquía del nuevo hero */
+        /* Título principal transformador */
         .hero-impact {
-            font-size: 3.2rem;
+            font-size: 3rem;
             font-weight: 800;
             color: #1a202c;
-            line-height: 1.2;
+            line-height: 1.15;
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.15rem;
+        }
+        
+        .hero-impact-secondary {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.15;
+            display: block;
+        }
+        
+        /* Subtítulo y explicación */
+        .hero-subtitle-block {
+            text-align: center;
+            margin: 1.8rem auto 1.2rem;
+            max-width: 40ch;
+        }
+        
+        .hero-opening {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 0.8rem;
+            line-height: 1.45;
+        }
+        
+        .hero-explanation {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #6b7280;
+            margin-bottom: 0;
+            line-height: 1.5;
         }
         
         .hero-elements {
@@ -433,6 +479,19 @@
             font-size: 1.05rem;
             color: #667eea;
             opacity: 0.85;
+        }
+        
+        /* Frase de giro identitario */
+        .identity-shift {
+            font-size: 1.08rem;
+            font-style: italic;
+            font-weight: 500;
+            color: #4a5568;
+            text-align: center;
+            margin: 2rem auto 2.2rem;
+            max-width: 38ch;
+            line-height: 1.55;
+            padding: 0 1rem;
         }
         
         .hero-key-message {
@@ -1002,21 +1061,70 @@
             
             .hero-brand-pill { margin-bottom: 0.3rem; }
             
+            /* Micro insight responsive */
+            .micro-insight {
+                font-size: 0.89rem;
+                margin: 0 auto 1.2rem;
+                max-width: 36ch;
+                padding: 0 1rem;
+            }
+            
             .hero-title {
                 font-size: clamp(1.85rem, 6.2vw, 2.2rem);
                 line-height: 1.16;
-                margin-bottom: 1rem;
+                margin-bottom: 1.4rem;
                 letter-spacing: -0.02em;
-                max-width: 32ch; /* widen to use more horizontal space */
+                max-width: 32ch;
                 text-wrap: balance;
             }
             
-            /* Responsive del nuevo hero */
-            .hero-impact { font-size: 2.2rem; line-height: 1.15; margin-bottom: 0.35rem; display:block; }
+            /* Títulos principales responsive */
+            .hero-impact { 
+                font-size: 2rem; 
+                line-height: 1.18; 
+                margin-bottom: 0.15rem; 
+                display:block; 
+            }
             
-            .hero-elements { font-size: 0.88rem; gap: 0.8rem; margin-top: 0.55rem; flex-wrap: nowrap; padding: 0 0.3rem; }
+            .hero-impact-secondary {
+                font-size: 2rem;
+                line-height: 1.18;
+            }
+            
+            /* Subtítulo responsive */
+            .hero-subtitle-block {
+                margin: 1.4rem auto 1rem;
+                max-width: 36ch;
+                padding: 0 1rem;
+            }
+            
+            .hero-opening {
+                font-size: 1.02rem;
+                margin-bottom: 0.7rem;
+            }
+            
+            .hero-explanation {
+                font-size: 0.95rem;
+            }
+            
+            /* Elementos con iconos responsive */
+            .hero-elements { 
+                font-size: 0.88rem; 
+                gap: 0.8rem; 
+                margin-top: 0.85rem; 
+                flex-wrap: nowrap; 
+                padding: 0 0.3rem; 
+            }
             .element-item { font-size: 0.86rem; gap: 0.42rem; }
             .element-item i { font-size: 0.96rem; }
+            
+            /* Identity shift responsive */
+            .identity-shift {
+                font-size: 0.98rem;
+                margin: 1.6rem auto 1.8rem;
+                max-width: 36ch;
+                padding: 0 1rem;
+            }
             
             .hero-key-message { font-size: 1.2rem; margin: 1.1rem auto .8rem; line-height: 1.35; }
             .key-secondary { display:block; font-weight:600; color:#374151; }
@@ -1131,23 +1239,54 @@
                 white-space: nowrap;
             }
             
+            /* Micro insight extra small */
+            .micro-insight {
+                font-size: 0.83rem;
+                margin: 0 auto 1rem;
+                padding: 0 1.2rem;
+                max-width: 36ch;
+            }
+            
             .hero-title {
                 font-size: 1.6rem;
                 line-height: 1.3;
                 letter-spacing: -0.1px;
                 padding: 0 0.5rem;
+                margin-bottom: 1.2rem;
             }
             
-            /* Extra small responsive del nuevo hero */
+            /* Títulos principales extra small */
             .hero-impact {
-                font-size: 1.8rem;
-                line-height: 1.2;
+                font-size: 1.75rem;
+                line-height: 1.22;
+                margin-bottom: 0.12rem;
             }
             
+            .hero-impact-secondary {
+                font-size: 1.75rem;
+                line-height: 1.22;
+            }
+            
+            /* Subtítulo extra small */
+            .hero-subtitle-block {
+                margin: 1.2rem auto 0.85rem;
+                padding: 0 1.2rem;
+            }
+            
+            .hero-opening {
+                font-size: 0.94rem;
+                margin-bottom: 0.6rem;
+            }
+            
+            .hero-explanation {
+                font-size: 0.88rem;
+            }
+            
+            /* Elementos extra small */
             .hero-elements {
                 font-size: 0.8rem;
                 gap: 0.6rem;
-                margin-top: 0.48rem;
+                margin-top: 0.7rem;
                 padding: 0 0.25rem;
             }
             
@@ -1158,6 +1297,13 @@
             
             .element-item i {
                 font-size: 0.86rem;
+            }
+            
+            /* Identity shift extra small */
+            .identity-shift {
+                font-size: 0.91rem;
+                margin: 1.4rem auto 1.6rem;
+                padding: 0 1.2rem;
             }
             
             .hero-key-message {
@@ -1211,10 +1357,17 @@
         /* Extra small tuning for phones ~360-420px */
         @media (max-width: 420px) {
             .container { padding: 0 0.65rem; }
-            .hero-title { max-width: 34ch; }
-            .hero-actions { max-width: 320px; }
+            .micro-insight { font-size: 0.81rem; max-width: 34ch; }
+            .hero-title { max-width: 34ch; margin-bottom: 1.1rem; }
+            .hero-impact { font-size: 1.68rem; }
+            .hero-impact-secondary { font-size: 1.68rem; }
+            .hero-subtitle-block { max-width: 34ch; }
+            .hero-opening { font-size: 0.91rem; }
+            .hero-explanation { font-size: 0.86rem; }
             .hero-elements { font-size: 0.82rem; gap: 0.62rem; padding: 0 0.2rem; }
             .element-item { font-size: 0.8rem; gap: 0.4rem; }
+            .identity-shift { font-size: 0.89rem; max-width: 34ch; }
+            .hero-actions { max-width: 320px; }
         }
         
         /* Scroll behavior */
@@ -1317,36 +1470,47 @@
                         </div>
                     </div>
                     
-                    <!-- Main Title (simplified, mobile-first) -->
+                    <!-- Micro Insight -->
+                    <p class="micro-insight">
+                        Cuando nada cambia afuera… no es el destino: es el mismo programa interno repitiéndose.
+                    </p>
+                    
+                    <!-- Main Title (transformador) -->
                     <h1 class="hero-title">
-                        <span class="hero-impact">Vamos directo a la raíz</span>
-                        <span class="hero-elements">
-                            <span class="element-item"><i class="fas fa-heart-pulse"></i> Cuerpo</span>
-                            <span class="element-item"><i class="fas fa-coins"></i> Dinero</span>
-                            <span class="element-item"><i class="fas fa-people-group"></i> Vínculos</span>
-                            <span class="element-item"><i class="fas fa-brain"></i> Mente</span>
-                        </span>
+                        <span class="hero-impact">Tu vida no está bloqueada.</span>
+                        <span class="hero-impact-secondary">Está codificada.</span>
                     </h1>
                     
-                    <!-- Key Message -->
-                    <div class="hero-key-message">
-                        Tus creencias inconscientes escriben tu presente en cada área de tu vida.
+                    <!-- Subtítulo apertura -->
+                    <div class="hero-subtitle-block">
+                        <p class="hero-opening">Y esa codificación puede reescribirse desde la raíz.</p>
+                        <p class="hero-explanation">
+                            No necesitas más fuerza de voluntad, sino descubrir las creencias invisibles que hoy escriben tu:
+                        </p>
                     </div>
                     
-                    <!-- Revelation (short) -->
-                    <p class="hero-revelation">
-                        <span class="highlight">Al hacerlas conscientes</span> dejan de operar en ti. Si no lo has logrado, es porque estás dejando sin atender las <strong>creencias de raíz</strong>.
+                    <!-- Elementos con iconos -->
+                    <div class="hero-elements">
+                        <span class="element-item"><i class="fas fa-heart-pulse"></i> Cuerpo</span>
+                        <span class="element-item"><i class="fas fa-coins"></i> Dinero</span>
+                        <span class="element-item"><i class="fas fa-people-group"></i> Vínculos</span>
+                        <span class="element-item"><i class="fas fa-brain"></i> Decisiones</span>
+                    </div>
+                    
+                    <!-- Frase de giro identitario -->
+                    <p class="identity-shift">
+                        El cambio real no inicia haciendo más, sino recordando quién eres sin tus heridas.
                     </p>
                     
                     <!-- Call to Action -->
                     <div class="hero-actions">
                         <a href="#contacto" class="btn btn--primary btn--lg">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Agenda tu Sesión</span>
+                            <i class="fas fa-magic"></i>
+                            <span>Agenda tu sesión — comienza a reescribir tu código interno</span>
                         </a>
                         <a href="#metodo" class="btn btn--secondary btn--lg">
                             <i class="fas fa-play"></i>
-                            <span>Conoce el Método</span>
+                            <span>Conoce el método — Psicología de la Creencia®</span>
                         </a>
                     </div>
                 </div>
