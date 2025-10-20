@@ -285,7 +285,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 9rem 2rem 5rem;
+            padding: 7.5rem 2rem 5rem; /* lowered to reduce top gap on mobile */
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
         
@@ -295,11 +295,11 @@
         }
         
         .hero-brand-container {
-            margin-bottom: 3.5rem;
+            margin-bottom: 2.4rem; /* tighter to pull content up */
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1.1rem;
         }
         
         .method-label {
@@ -373,16 +373,17 @@
         }
         
         .hero-title {
-            font-size: 2.6rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            line-height: 1.25;
-            margin-bottom: 1.5rem;
+            line-height: 1.18;
+            margin-bottom: 1.2rem;
             color: #2d3748;
             text-align: center;
             letter-spacing: -0.3px;
-            max-width: 800px;
+            max-width: 24ch; /* more controlled line length for nicer breaks */
             margin-left: auto;
             margin-right: auto;
+            text-wrap: balance; /* modern browsers */
         }
         
         /* Jerarquía del nuevo hero */
@@ -954,7 +955,7 @@
             }
             
             .hero {
-                padding: 7rem 1rem 4rem;
+                padding: 6.25rem 1rem 4rem; /* reduce a bit more on mobile */
                 min-height: auto;
             }
             
@@ -978,10 +979,12 @@
             }
             
             .hero-title {
-                font-size: 2.1rem;
+                font-size: 2.05rem;
                 line-height: 1.22;
                 margin-bottom: 1.2rem;
                 letter-spacing: -0.2px;
+                max-width: 22ch;
+                text-wrap: balance;
             }
             
             /* Responsive del nuevo hero */
@@ -1262,9 +1265,8 @@
             <div class="container">
                 <div class="hero-content">
                     <!-- Brand Container -->
-                    <div class="hero-brand-container">
-                        <div class="method-label">Método Integral</div>
-                        <div class="hero-brand-pill">
+                        <div class="hero-brand-container">
+                            <div class="hero-brand-pill">
                             <span class="brand-highlight">Psicología</span> de la <span class="brand-highlight">Creencia®</span>
                         </div>
                     </div>
