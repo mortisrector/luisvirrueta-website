@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Luis Virrueta - Psicología de la Creencia 🧠
 
 ## 🎯 Descripción del Proyecto
@@ -287,3 +288,7 @@ Para consultas sobre la implementación técnica o modificaciones del código, t
 ---
 
 **🎯 Resultado Final**: Un website moderno, mantenible, performante y preparado para el futuro, siguiendo las mejores prácticas de desarrollo web actual.
+=======
+# luisvirrueta-website
+Sitio web profesional de Luis Virrueta - Psicología de la Creencia
+>>>>>>> 239e54eaf7ef93fdc2aa22230d8186d90e9cb1ad
