@@ -978,35 +978,21 @@
             }
             
             .hero-title {
-                font-size: 1.9rem;
-                line-height: 1.3;
-                margin-bottom: 1.5rem;
+                font-size: 2.1rem;
+                line-height: 1.22;
+                margin-bottom: 1.2rem;
                 letter-spacing: -0.2px;
             }
             
             /* Responsive del nuevo hero */
-            .hero-impact {
-                font-size: 2.2rem;
-                line-height: 1.2;
-                margin-bottom: 0.5rem;
-            }
+            .hero-impact { font-size: 2.2rem; line-height: 1.15; margin-bottom: 0.35rem; display:block; }
             
-            .hero-elements {
-                font-size: 1.6rem;
-                line-height: 1.3;
-            }
+            .hero-elements { font-size: 1.05rem; font-weight:600; color:#6b7280; letter-spacing: .2px; margin-top: .1rem; display:block; }
             
-            .hero-key-message {
-                font-size: 1.4rem;
-                margin: 1.5rem auto 1rem;
-                line-height: 1.4;
-            }
+            .hero-key-message { font-size: 1.25rem; margin: 1.2rem auto .8rem; line-height: 1.35; }
+            .key-secondary { display:block; font-weight:600; color:#374151; }
             
-            .hero-revelation {
-                font-size: 1.1rem;
-                margin: 0 auto 2rem;
-                line-height: 1.5;
-            }
+            .hero-revelation { font-size: 0.98rem; margin: 0 auto 1.8rem; line-height: 1.5; color:#6b7280; }
             
             .hero-title br {
                 display: none;
@@ -1283,22 +1269,22 @@
                         </div>
                     </div>
                     
-                    <!-- Main Title -->
+                    <!-- Main Title (simplified, mobile-first) -->
                     <h1 class="hero-title">
-                        <span class="hero-impact">Sin darte cuenta, tus creencias inconscientes<br>
-                        escriben tu presente:</span><br>
-                        <span class="hero-elements">tu cuerpo, tu dinero, tus vínculos, tu mente.</span>
+                        <span class="hero-impact">Tus creencias inconscientes
+                        escriben tu presente</span>
+                        <span class="hero-elements">Cuerpo · Dinero · Vínculos · Mente</span>
                     </h1>
                     
                     <!-- Key Message -->
                     <div class="hero-key-message">
-                        <span class="highlight">Al hacerlas conscientes</span> dejan de operar en ti
+                        <span class="highlight">Al hacerlas conscientes</span>
+                        <span class="key-secondary">dejan de operar en ti</span>
                     </div>
                     
-                    <!-- Revelation -->
+                    <!-- Revelation (short) -->
                     <p class="hero-revelation">
-                        Por ello no has podido cambiar tu vida:<br>
-                        <strong>porque lo intentas solo con la consciencia</strong>
+                        Si no lo has logrado, es porque estás dejando sin atender las <strong>creencias de raíz</strong>.
                     </p>
                     
                     <!-- Call to Action -->
@@ -4233,15 +4219,19 @@
             nextBtn.addEventListener('click', nextSlide);
             prevBtn.addEventListener('click', prevSlide);
             
-            // Auto-play carousel
+            // Auto-play carousel (disabled by default)
             let autoPlayInterval;
+            let autoPlayEnabled = false;
             
             function startAutoPlay() {
-                autoPlayInterval = setInterval(nextSlide, 6000);
+                if (!autoPlayEnabled) return;
+                stopAutoPlay();
+                autoPlayInterval = setInterval(nextSlide, 7000);
             }
             
             function stopAutoPlay() {
-                clearInterval(autoPlayInterval);
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+                autoPlayInterval = null;
             }
             
             // Touch/swipe support
@@ -4252,7 +4242,7 @@
             track.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
                 isDragging = true;
-                stopAutoPlay();
+                if (autoPlayEnabled) stopAutoPlay();
             });
             
             track.addEventListener('touchmove', (e) => {
@@ -4273,14 +4263,12 @@
                     prevSlide();
                 }
                 
-                setTimeout(startAutoPlay, 3000);
+                if (autoPlayEnabled) setTimeout(startAutoPlay, 3000);
             });
             
             // Pause on hover
-            track.addEventListener('mouseenter', stopAutoPlay);
-            track.addEventListener('mouseleave', () => {
-                setTimeout(startAutoPlay, 1000);
-            });
+            track.addEventListener('mouseenter', () => autoPlayEnabled && stopAutoPlay());
+            track.addEventListener('mouseleave', () => { if (autoPlayEnabled) setTimeout(startAutoPlay, 1000); });
             
             // Keyboard navigation
             document.addEventListener('keydown', (e) => {
@@ -4291,8 +4279,17 @@
                 }
             });
             
-            // Start auto-play
-            setTimeout(startAutoPlay, 3000);
+            // Don't start auto-play by default. Enable only when the section becomes visible (optional)
+            const quotesSection = document.querySelector('.quotes-section');
+            if (quotesSection) {
+                const observer = new IntersectionObserver((entries)=>{
+                    entries.forEach(e=>{
+                        if (e.isIntersecting) { /* keep disabled unless explicitly enabled */ }
+                        else { stopAutoPlay(); }
+                    });
+                }, { threshold: 0.25 });
+                observer.observe(quotesSection);
+            }
             
             console.log('✅ Quotes carousel initialized');
         }
